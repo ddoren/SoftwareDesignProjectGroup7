@@ -20,7 +20,7 @@ public class ArticleController {
     public String getAllArticles(Model model){
         List<Article> articleList = articleRepository.findAll();
         model.addAttribute("articles", articleList);
-        return "/ShowAricles.html";
+        return "/ShowArticles.html";
     }
 
 
