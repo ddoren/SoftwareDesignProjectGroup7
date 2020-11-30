@@ -1,5 +1,4 @@
 body{
-    font-family: Verdana;
     background-image: url("honeycomb.png");
     background-position: top;
     background-repeat: no-repeat;
@@ -10,7 +9,15 @@ body{
     height: 100%;
     width: 100%;
     margin: 0;
+}
 
+p{
+    font-family: "Jazz LET", sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration-color: darkslategray;
+    text-align: center;
+    color: darkslategray;
 }
 
 footer{
@@ -92,7 +99,45 @@ footer{
     border: none;
     font-family: "Jazz LET", sans-serif;
     font-weight: bold;
-    width: 260px;
+    width: 280px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 30px;
+    background-image: url("up logo.png");
+    background-repeat: no-repeat;
+    alignment: left;
+    background-size: contain;
+}
+
+#btn-Home{
+    background-color: transparent;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-top: 10px;
+    color: darkslategray;
+    border: none;
+    font-family: "Jazz LET", sans-serif;
+    font-weight: bold;
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 30px;
+    background-image: url("home logo.png");
+    background-repeat: no-repeat;
+    alignment: left;
+    background-size: contain;
+}
+
+#btn-test{
+    background-color: transparent;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-top: 10px;
+    color: darkslategray;
+    border: none;
+    font-family: "Jazz LET", sans-serif;
+    font-weight: bold;
+    width: 180px;
     height: 40px;
     border-radius: 10px;
     font-size: 30px;

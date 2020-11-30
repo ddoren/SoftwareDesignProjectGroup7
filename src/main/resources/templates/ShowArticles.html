@@ -2,11 +2,17 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="design.css" th:href="@{/design.css}">
+    <title>Catalin's Articles</title>
+    <link rel="stylesheet" href="/static/design.css" th:href="@{/design.css}">
 </head>
 <body>
 <div id="TOP"><div th:replace="menu :: menu_template"></div></div>
+<a href="/">
+    <button class="btn-Home" id="btn-Home">
+        HOME
+    </button>
+</a>
+</br>
 </br>
 
     <div th:each="articles:${articles}" >
