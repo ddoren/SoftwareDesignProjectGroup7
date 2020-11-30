@@ -24,4 +24,9 @@ public class ArticleController {
     }
 
 
+    @GetMapping("/about")
+    public String getAbout(){
+        return "/about";}
+
+
 }
