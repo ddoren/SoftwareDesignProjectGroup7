@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link rel="stylesheet" href="design.css" th:href="@{/design.css}">
+</head>
+<body>
+<!-- This div adds the menu with the navigation buttons and it
+should be always located on top of the page on every page -->
+<div id="TOP"><div th:replace="menu :: menu_template"></div></div>
+</br>
+
+
+<!-- This div adds the footer to the page and it should
+be present in every page where we have the div "menu_template" -->
+<div th:insert="footer :: footer_template"></div>
+</body>
+</html>

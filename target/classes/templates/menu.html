@@ -1,0 +1,29 @@
+<div th:fragment="menu_template" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="navigation">
+        <nav class="flex-container" id="flex-container">
+            <!-- Put in href the path of the button when you map it
+             in the controller and do the same for the other buttons-->
+            <a href="">
+                <button class="btn-ShowArticles" id="btn-ShowArticles">
+                    ARTICLES
+                </button>
+            </a>
+            <a href="">
+                <button class="btn-ShowAbout" id="btn-ShowAbout">
+                    ABOUT
+                </button>
+            </a>
+            <a href='#btn-BackOnTop'>
+                <button class="btn-ShowContact" id="btn-ShowContact">
+                    CONTACT
+                </button>
+            </a>
+            <!--This button will be added later-->
+            <!--        <a href="">-->
+            <!--            <button class="btn-Translate" id="btn-Translate">-->
+            <!--                TRANSLATE-->
+            <!--            </button>-->
+            <!--        </a>-->
+        </nav>
+    </div>
+</div>
