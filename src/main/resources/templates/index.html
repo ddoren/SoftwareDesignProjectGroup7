@@ -8,12 +8,12 @@
 <body>
 <!-- This div adds the menu with the navigation buttons and it
 should be always located on top of the page on every page -->
-<div th:replace="menu :: menu_template"></div>
+<div id="TOP"><div th:replace="menu :: menu_template"></div></div>
 </br>
-I hate my life
+
 
 <!-- This div adds the footer to the page and it should
 be present in every page where we have the div "menu_template" -->
-<!-- <div th:insert="footer :: fooer_template"></div> -->
+<div th:insert="footer :: footer_template"></div>
 </body>
 </html>

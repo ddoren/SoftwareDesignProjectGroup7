@@ -1,0 +1,114 @@
+body{
+    font-family: Verdana;
+    background-image: url("honeycomb.png");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    text-decoration: none;
+    background-color: aliceblue;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+
+}
+
+footer{
+    margin-top: 50%;
+    margin-bottom: 0;
+    border-bottom: 0;
+    color: lightgray;
+    width: 100%;
+    position: center;
+    alignment: center;
+    text-align: center;
+    background-color: darkslategray;
+    opacity: 85%;
+    padding-bottom: 1.1%;
+}
+
+.navigation{
+    font-size: 0;
+    position: center;
+    alignment: center;
+    width: 100%;
+    object-position: center;
+    text-align: center;
+    padding-top: 1.3%;
+    padding-bottom: 1.3%;
+    background-color: darkslategray;
+    opacity: 85%;
+    background-image: url("catalin black.png");
+    background-repeat: no-repeat;
+}
+
+#btn-ShowArticles{
+    background-color: transparent;
+    margin-left: 6%;
+    margin-right: 6%;
+    color: lightgray;
+    border: none;
+    font-family: "Jazz LET", sans-serif;
+    font-weight: bold;
+    width: 160px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+#btn-ShowAbout{
+    background-color: transparent;
+    margin-left: 6%;
+    margin-right: 6%;
+    color: lightgray;
+    border: none;
+    font-family: "Jazz LET", sans-serif;
+    font-weight: bold;
+    width: 160px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+#btn-ShowContact{
+    background-color: transparent;
+    margin-left: 6%;
+    margin-right: 6%;
+    color: lightgray;
+    border: none;
+    font-family: "Jazz LET", sans-serif;
+    font-weight: bold;
+    width: 160px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+#btn-BackOnTop{
+    background-color: transparent;
+    margin-left: 6%;
+    margin-right: 6%;
+    color: lightgray;
+    border: none;
+    font-family: "Jazz LET", sans-serif;
+    font-weight: bold;
+    width: 260px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+/*This button will be added later*/
+
+/*#btn-Translate{*/
+/*    background-color: transparent;*/
+/*    padding: 0;*/
+/*    border: none;*/
+/*    font-weight: bold;*/
+/*    width: 160px;*/
+/*    height: 40px;*/
+/*    border-radius: 10px;*/
+/*    font-size: 150%;*/
+/*}*/
+
+/*violet shades: #1a0034  #5C246E  #FFAE42*/
