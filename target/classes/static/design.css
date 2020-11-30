@@ -11,14 +11,101 @@ body{
     margin: 0;
 }
 
-p{
+/*Starting from here I design the 2 row split display*/
+.column{
+    float: left;
+    width: 46%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.row:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row{
+    position: center;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+/*Until here*/
+
+h1{
+    text-align: center;
+    background: transparent;
     font-family: "Jazz LET", sans-serif;
     font-weight: bold;
     font-size: 30px;
-    text-decoration-color: darkslategray;
-    text-align: center;
-    color: darkslategray;
 }
+
+p{
+    font-family: "Jazz LET", sans-serif;
+    font-weight: normal;
+    font-size: 26px;
+    text-decoration-color: black;
+    text-align: center;
+    color: black;
+}
+
+table{
+    position: center;
+    text-align: center;
+    color: black;
+    /*border-collapse: collapse;*/
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 1px solid black;
+}
+
+thead{
+    position: center;
+    text-align: center;
+    color: black;
+    background-color: darkslategray;
+    opacity: 90%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+tbody{
+    position: center;
+    text-align: center;
+    color: black;
+    background-color: lightgray;
+    opacity: 90%;
+}
+
+th{
+    position: center;
+    text-align: center;
+    color: black;
+    font-family: "Jazz LET", sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+    text-decoration-color: black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+}
+
+tr{
+    position: center;
+    text-align: center;
+    color: black;
+}
+
+td{
+    position: center;
+    text-align: center;
+    color: black;
+}
+
+
 
 footer{
     margin-top: 50%;
