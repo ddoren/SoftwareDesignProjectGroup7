@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <link rel="stylesheet" href="/static/design.css" th:href="@{/design.css}">
+</head>
+<body>
+<div id="TOP"><div th:replace="menu :: menu_template"></div></div>
+<a href="/">
+    <button class="btn-Home" id="btn-Home">
+        HOME
+    </button>
+</a>
+</br>
+</br>
+
+<div class="row">
+    <div class="column">
+        <table>
+            <thead>
+            <tr>
+            <th>Who am I?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td><p>I am Catalin Istvan.</p>
+                <p>My parents are hungarian.</p>
+                <p>I am from Romania</p>
+                <p>I speak 3 languages:</p>
+                <p>Hungarian, Romanian and English.</p>
+                <p></p>
+            </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="column">
+        <table>
+            <thead>
+            <tr>
+            <th>What motivates me?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td><p>Cheese.</p>
+                <p>Big Mac burgers give</p>
+                <p>me a lot of motivation :).</p>
+            </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div th:insert="footer :: footer_template"></div>
+</body>
+</html>
