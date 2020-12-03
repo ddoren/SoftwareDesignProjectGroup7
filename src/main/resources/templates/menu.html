@@ -1,34 +1,32 @@
 <div th:fragment="menu_template" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="navigation">
         <nav class="flex-container" id="flex-container">
-            <!-- Put in href the path of the button when you map it
-             in the controller and do the same for the other buttons-->
-            <a href="/articles">
-                <button class="btn-ShowArticles" id="btn-ShowArticles">
-                    ARTICLES
-                </button>
-            </a>
-            <a href="/about">
-                <button class="btn-ShowAbout" id="btn-ShowAbout">
-                    ABOUT
-                </button>
-            </a>
-            <a href='#btn-BackOnTop'>
-                <button class="btn-ShowContact" id="btn-ShowContact">
-                    CONTACT
-                </button>
-            </a>
-            <form method="post" action="/logIn">
-                <input name="email" type="email">
-                <input name="password" type="password">
-                <input type="submit">
-            </form>
-            <!--This button will be added later-->
-            <!--        <a href="">-->
-            <!--            <button class="btn-Translate" id="btn-Translate">-->
-            <!--                TRANSLATE-->
-            <!--            </button>-->
-            <!--        </a>-->
+        <div id="separation">
+           <div id="c1"><img src="catalin%20black.png" alt="image"></div>
+           <div id="c2"> <a href="/articles">
+                    <button class="btn-ShowArticles" id="btn-ShowArticles">
+                        ARTICLES
+                    </button>
+                </a>
+                <a href="/about">
+                    <button class="btn-ShowAbout" id="btn-ShowAbout">
+                     ABOUT
+                    </button>
+                </a>
+                <a href='#btn-BackOnTop'>
+                    <button class="btn-ShowContact" id="btn-ShowContact">
+                        CONTACT
+                    </button>
+                </a>
+           </div>
+            <div id="c3">
+                <form method="post" action="/logIn">
+                <div><input name="email" type="email" placeholder="E_mail address" style="text-align: center"></div>
+                <div><input name="password" type="password" placeholder="Password" style="text-align: center"></div>
+                <div><input type="submit" value="Login"/></div>
+                </form>
+            </div>
+        </div>
         </nav>
     </div>
 </div>

@@ -23,10 +23,22 @@ public class ArticleController {
         return "/ShowArticles.html";
     }
 
-
+    //This is the html button for the "About" subpage
     @GetMapping("/about")
     public String getAbout(){
-        return "/about";}
+        return "/about";
+    }
 
+    //This is the html button for the "Create Article" subpage
+    @GetMapping("/CreateArticle")
+    public String getArticleCreateForm(){
+        return "/CreateArticle";
+    }
+
+    //This is the html button "HOME"
+    @GetMapping("/index")
+    public String getIndex(){
+        return "/index";
+    }
 
 }

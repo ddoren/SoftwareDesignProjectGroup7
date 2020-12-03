@@ -6,15 +6,19 @@
     <link rel="stylesheet" href="/static/design.css" th:href="@{/design.css}">
 </head>
 <body>
-<div id="TOP"><div th:replace="menu :: menu_template"></div></div>
+<div th:replace="menu :: menu_template"></div>
 </br>
+</br>
+</br>
+</br>
+</br>
+</br>
+<div id="Home">
+<p>You're home now.</p>
+<p>Relax and take a sip of tea.</p>
+</div>
 
-<p>This is the front page</p>
-<p>Here all the good boys</p>
-<p>receive what they deserve.</p>
-<p>Have you been a good boy?</p>
 
-
-<div th:insert="footer :: footer_template"></div>
+<div id="placeFooter" th:insert="footer :: footer_template"></div>
 </body>
 </html>

@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="TOP"><div th:replace="menu :: menu_template"></div></div>
-<a href="/">
+<a href="/index">
     <button class="btn-Home" id="btn-Home">
         HOME
     </button>
@@ -56,9 +56,6 @@
         </table>
     </div>
 </div>
-
-<!--0This is a small chanfge-->
-
-<div th:insert="footer :: footer_template"></div>
+<div id="placeFooter" th:insert="footer :: footer_template"></div>
 </body>
 </html>
