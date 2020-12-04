@@ -1,9 +1,11 @@
 package softwaredesign.sdproject.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 import softwaredesign.sdproject.model.Article;
 import softwaredesign.sdproject.repository.ArticleRepository;
 
@@ -39,6 +41,20 @@ public class ArticleController {
     @GetMapping("/index")
     public String getIndex(){
         return "/index";
+    }
+
+    //Create Article
+    @PostMapping("/addArticle")
+    public String addUser(@ModelAttribute Article _article) {
+        articleRepository.save(_article);
+        return "/ShowArticles";
+    }
+
+    //Delete Article by ID
+    @DeleteMapping("/deleteArticle")
+    public String deleteArticle(@PathVariable ("articleId") int articleId ) {
+        articleRepository.deleteById(articleId);
+        return "/ShowArticles";
     }
 
 }

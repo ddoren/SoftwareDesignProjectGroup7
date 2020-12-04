@@ -18,17 +18,17 @@
     <table>
       <thead><tr><th>Write article</th></tr></thead>
       <tbody><tr><td>
-                <form id="article" action="">
+                <form id="article" action="/addArticle" method="post">
                     <div>   <label>What type or article are you creating?</label><br>
-                            <br><input list="articleTypes" name="myArticleList" placeholder="- select option -" style="text-align: center">
-                                <datalist id="articleTypes">
-                                    <option value="Tech">
-                                    <option value="Modelling">
+                            <br><input list="articleTypes" name="category" placeholder="- select option -" style="text-align: center">
+                                <datalist name="category" id="articleTypes">
+                                    <option name="category" value="Tech">
+                                    <option name="category" value="Modelling">
                                 </datalist></div>
                     <div>   <br><label>Article title (max. 200 ch.)</label><br>
-                            <br><input type="text" placeholder="- nothing added -" style="text-align: center"></div>
+                            <br><input type="text" name="title" placeholder="- nothing added -" style="text-align: center"></div>
                     <div>   <br><label>Article content (max. 10.000 ch.)</label><br>
-                            <br><input type="text" placeholder="- nothing added -" style="text-align: center"></div>
+                            <br><input type="text" name="body" placeholder="- nothing added -" style="text-align: center"></div>
                     <div>   <br><input type="submit" value="Create">
                             <button>Cancel</button></div><br>
                 </form>
