@@ -10,6 +10,7 @@ import softwaredesign.sdproject.model.Article;
 import softwaredesign.sdproject.repository.ArticleRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ArticleController {
@@ -52,9 +53,22 @@ public class ArticleController {
 
     //Delete Article by ID
     @DeleteMapping("/deleteArticle")
-    public String deleteArticle(@PathVariable ("articleId") int articleId ) {
+    public String deleteArticle(@PathVariable("articleId") int articleId) {
         articleRepository.deleteById(articleId);
         return "/ShowArticles";
+    }
+
+    //Update Article by ID
+    @PutMapping("/updateArticle")
+    public String updateArticle(@PathVariable("articleId") int articleId, @RequestBody Article article) {
+        Optional<Article> articleData = articleRepository.findById(articleId);
+        Article _article = articleData.get();
+        _article.setCategory(article.getCategory());
+        _article.setTitle(article.getTitle());
+        _article.setBody(article.getBody());
+        articleRepository.save(_article);
+        return "/ShowArticles";
+
     }
 
 }
