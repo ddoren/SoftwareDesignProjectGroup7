@@ -11,6 +11,14 @@ public class Article {
     private String title;
     private String body;
 
+    public Article() {}
+
+    public Article(int articleId,String category,String title,String body){
+        this.articleId=articleId;
+        this.category=category;
+        this.title=title;
+        this.body=body;
+}
     @Id
     @Column(name = "article_id", nullable = false)
     public int getArticleId() {

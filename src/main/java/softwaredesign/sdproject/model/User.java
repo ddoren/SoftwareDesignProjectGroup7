@@ -11,6 +11,13 @@ public class User {
     private String password;
     private String permission;
 
+public User(){}
+public User(int userId,String email,String password,String permission){
+    this.userId=userId;
+    this.email=email;
+    this.password=password;
+    this.permission=permission;
+}
     @Id
     @Column(name = "user_id", nullable = false)
     public int getUserId() {

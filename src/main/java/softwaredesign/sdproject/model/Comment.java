@@ -9,7 +9,13 @@ public class Comment {
     private int commentId;
     private String comment;
     private Integer articleId;
+public Comment(){}
 
+public Comment(int commentId,String comment,Integer articleId){
+    this.commentId=commentId;
+    this.comment=comment;
+    this.articleId=articleId;
+}
     @Id
     @Column(name = "comment_id", nullable = false)
     public int getCommentId() {
