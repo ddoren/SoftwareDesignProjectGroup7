@@ -18,7 +18,7 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserRepository userRepository;
-    User user;
+    User user=new User();
     @PostMapping("logIn")
     public ResponseEntity<User> logIn(@ModelAttribute("email") String email, @ModelAttribute("password") String password){
         List<User> userList;
