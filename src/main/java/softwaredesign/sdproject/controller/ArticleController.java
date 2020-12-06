@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import softwaredesign.sdproject.model.Article;
+import softwaredesign.sdproject.model.User;
 import softwaredesign.sdproject.repository.ArticleRepository;
+import softwaredesign.sdproject.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,18 +19,21 @@ public class ArticleController {
 
     @Autowired
     ArticleRepository articleRepository;
-
     //Show All Articles
     @GetMapping("/articles")
     public String getAllArticles(Model model){
         List<Article> articleList = articleRepository.findAll();
         model.addAttribute("articles", articleList);
+        model.addAttribute("user", UserController.modelUser());
+
         return "/ShowArticles.html";
     }
 
     //This is the html button for the "About" subpage
     @GetMapping("/about")
-    public String getAbout(){
+    public String getAbout(Model model){
+        model.addAttribute("user", UserController.modelUser());
+
         return "/about";
     }
 
@@ -40,7 +45,8 @@ public class ArticleController {
 
     //This is the html button "HOME"
     @GetMapping("/index")
-    public String getIndex(){
+    public String getIndex(Model model){
+        model.addAttribute("user", UserController.modelUser());
         return "/index";
     }
 

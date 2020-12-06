@@ -19,13 +19,15 @@
                     </button>
                 </a>
            </div>
-            <div id="c3">
-                <form method="post" action="/logIn">
+            <div th:if="${user.email==null}"id="c3">
+                <form method="post" action="/logIn" >
                 <div><input name="email" type="email" placeholder="E_mail address" style="text-align: center"></div>
                 <div><input name="password" type="password" placeholder="Password" style="text-align: center"></div>
                 <div><input type="submit" value="Login"/></div>
                 </form>
             </div>
+            <div th:if="${user.email!=null}"><a ><button> See account:<b th:text="${user.email}"> </b></button></a></div>
+            <div th:if="${user.email!=null}"><a href="/logout"><button>Log Out</button></a></div>
         </div>
         </nav>
     </div>

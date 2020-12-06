@@ -18,9 +18,12 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserRepository userRepository;
-    User user=new User();
+    static User user=new User();
+    static public User modelUser(){
+        return user;
+    }
     @PostMapping("logIn")
-    public ResponseEntity<User> logIn(@ModelAttribute("email") String email, @ModelAttribute("password") String password){
+    public String logIn(@ModelAttribute("email") String email, @ModelAttribute("password") String password){
         List<User> userList;
         userList=userRepository.findAll();
         for(int i=0;i<userList.size();i++){
@@ -30,13 +33,15 @@ public class UserController {
                 }
             }
         }
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return "redirect:/index";
     }
-    @PostMapping("logout")
-    public ResponseEntity<User> logOut(){
-        user=null;
-        return new ResponseEntity<>(HttpStatus.OK);
+    @GetMapping("logout")
+    public String logOut(){
+        User logOutUser=new User();
+        user=logOutUser;
+        return "redirect:/index";
     }
+
 
     @PostMapping("addUser")
     public ResponseEntity<User> addUser(@ModelAttribute User user1){
