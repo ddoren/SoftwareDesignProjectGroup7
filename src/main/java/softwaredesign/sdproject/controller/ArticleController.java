@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import softwaredesign.sdproject.model.Article;
 import softwaredesign.sdproject.repository.ArticleRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,8 +24,27 @@ public class ArticleController {
     public String getAllArticles(Model model){
         List<Article> articleList = articleRepository.findAll();
         model.addAttribute("articles", articleList);
-        return "/ShowArticles.html";
+        return "/ShowArticles";
     }
+
+    //Show Articles by Category
+    @GetMapping("/articles/{category}")
+    public String getAllArticlesByCategory(@PathVariable String category, Model model){
+        List<Article> _articleList = articleRepository.findByCategoryContaining(category);
+        model.addAttribute("articles", _articleList);
+
+
+        return "/ShowArticles";
+    }
+
+
+//    @GetMapping("/articles")
+//    public ResponseEntity<List<Article>> getAllArticles(@RequestParam(required = false)String category) {
+//        List<Article> articles = new ArrayList<>();
+//        articles = articleRepository.findAll();
+//        return new ResponseEntity<>(articles, HttpStatus.OK);
+//    }
+
 
     //This is the html button for the "About" subpage
     @GetMapping("/about")
@@ -52,7 +72,7 @@ public class ArticleController {
     }
 
     //Delete Article by ID
-    @DeleteMapping("/deleteArticle")
+    @GetMapping("/deleteArticle/{articleId}")
     public String deleteArticle(@PathVariable("articleId") int articleId) {
         articleRepository.deleteById(articleId);
         return "/ShowArticles";
