@@ -54,7 +54,8 @@ public class ArticleController {
     //This is to redirect to ModifyArticle page
     @GetMapping("/ModifyArticle/{articleId}")
     public String getModify(Model model, @PathVariable("articleId")int articleId){
-        model.addAttribute("article", articleRepository.findById(articleId));
+        model.addAttribute("user",UserController.modelUser());
+        model.addAttribute("article", articleRepository.findById(articleId).get());
         return "/ModifyArticle";
     }
 
