@@ -44,6 +44,13 @@ public class ArticleController {
         return "/index";
     }
 
+    //This is to redirect to ModifyArticle page
+    @GetMapping("/ModifyArticle/{articleId}")
+    public String getModify(Model model, @PathVariable("articleId")int articleId){
+        model.addAttribute("article", articleRepository.findById(articleId));
+        return "/ModifyArticle";
+    }
+
     //Create Article
     @PostMapping("/addArticle")
     public String addUser(@ModelAttribute Article _article) {
@@ -68,7 +75,6 @@ public class ArticleController {
         _article.setBody(article.getBody());
         articleRepository.save(_article);
         return "/ShowArticles";
-
     }
 
 }

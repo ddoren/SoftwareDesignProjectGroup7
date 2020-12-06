@@ -19,7 +19,7 @@
             <thead><tr><th th:text="${articles.title}"></th></tr></thead>
             <tbody><tr><td th:text="${articles.body}"></td></tr>
             <tr><td>
-                <a href="/updateArticle"><button id="btn-UpdateArticle">Modify</button></a>
+                <a th:href="@{'/ModifyArticle/'+${articles.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
                 <a href="/deleteArticle"><button id="btn-DeleteArticle">Remove</button></a>
             </td></tr></tbody>
             </br>

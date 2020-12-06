@@ -30,7 +30,8 @@ body{
     background-color: darkslategray;
     opacity: 85%;
 }
-
+/*This is the class that arranges the items in the navigation bar
+from here ... */
 #separation{
     overflow: hidden;
     width: 100%;
@@ -53,6 +54,26 @@ body{
     margin-right: 1%;
     width: 11%;
     padding-top: 0.8%;
+}
+/*  until here */
+
+#separation2{
+    overflow: hidden;
+    width: 100%;
+    background-color: lightgray;
+    opacity: 85%;
+    padding-bottom: 0.5%;
+}
+#c1\.2{
+    float: left;
+    margin-left: 1%;
+    width: 6%;
+
+}
+#c2\.2{
+    float: right;
+    margin-right: 1%;
+    width: 8.5%;
 }
 
 .login{
@@ -271,7 +292,7 @@ footer{
     background-size: contain;
 }
 
-#btn-test{
+#btn-CreateArticle{
     background-color: transparent;
     margin-left: 0%;
     margin-right: 0%;
@@ -284,6 +305,7 @@ footer{
     height: 40px;
     border-radius: 10px;
     font-size: 30px;
+    alignment: left;
 }
 
 /*This button will be added later*/
