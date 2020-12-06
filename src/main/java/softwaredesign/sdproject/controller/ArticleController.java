@@ -39,7 +39,8 @@ public class ArticleController {
 
     //This is the html button for the "Create Article" subpage
     @GetMapping("/CreateArticle")
-    public String getArticleCreateForm(){
+    public String getArticleCreateForm(Model model){
+        model.addAttribute("user",UserController.modelUser());
         return "/CreateArticle";
     }
 
