@@ -75,14 +75,10 @@ public class ArticleController {
 
     //Update Article by ID
     @PostMapping("/updateArticle")
-    public String updateArticle(@PathVariable("articleId") int articleId, @RequestBody Article article) {
-        Optional<Article> articleData = articleRepository.findById(articleId);
-        Article _article = articleData.get();
-        _article.setCategory(article.getCategory());
-        _article.setTitle(article.getTitle());
-        _article.setBody(article.getBody());
+    public String updateArticle( @ModelAttribute Article article) {
+        Article _article = article;
         articleRepository.save(_article);
-        return "/ShowArticles";
+        return "redirect:/articles";
     }
 
 }
