@@ -45,7 +45,7 @@ public class ArticleController {
     }
 
     //This is the html button "HOME"
-    @GetMapping("/index")
+    @GetMapping({"","/","/index","/index.html"})
     public String getIndex(Model model){
         model.addAttribute("user", UserController.modelUser());
         return "/index";
