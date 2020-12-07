@@ -67,10 +67,10 @@ public class ArticleController {
     }
 
     //Delete Article by ID
-    @DeleteMapping("/deleteArticle")
+    @GetMapping("/deleteArticle/{articleId}")
     public String deleteArticle(@PathVariable("articleId") int articleId) {
         articleRepository.deleteById(articleId);
-        return "/ShowArticles";
+        return "redirect:/articles";
     }
 
     //Update Article by ID

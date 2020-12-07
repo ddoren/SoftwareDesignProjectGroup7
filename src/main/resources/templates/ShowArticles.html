@@ -24,13 +24,12 @@
             <tr ><td>
                 <div th:switch="${user.permission}" >
                     <div th:case="ADMIN">
-                        <a th:href="@{'/ModifyArticle/'+${articles.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
-                        <a href="/deleteArticle"><button id="btn-DeleteArticle">Remove</button></a>
-                    </div>
-                    <div th:case="OWNER">
-                        <a href="/updateArticle"><button id="">Modify</button></a>
-                        <a href="/deleteArticle"><button id="">Remove</button></a>
-                    </div>
+                <a th:href="@{'/ModifyArticle/'+${articles.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
+                <a th:method="delete" th:href="@{'/deleteArticle/'+${articles.articleId}}"><button id="btn-DeleteArticle">Remove</button></a>
+            </div>
+                <div th:case="OWNER">
+                    <a href="/updateArticle"><button id="">Modify</button></a>
+                    <a href="/deleteArticle"><button id="">Remove</button></a>
                 </div>
             </td></tr></tbody>
             </br>
