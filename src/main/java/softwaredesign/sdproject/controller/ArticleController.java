@@ -45,7 +45,7 @@ public class ArticleController {
     }
 
     //This is the html button "HOME"
-    @GetMapping("/index")
+    @GetMapping({"","/","/index","/index.html"})
     public String getIndex(Model model){
         model.addAttribute("user", UserController.modelUser());
         return "/index";
@@ -74,15 +74,11 @@ public class ArticleController {
     }
 
     //Update Article by ID
-    @PutMapping("/updateArticle")
-    public String updateArticle(@PathVariable("articleId") int articleId, @RequestBody Article article) {
-        Optional<Article> articleData = articleRepository.findById(articleId);
-        Article _article = articleData.get();
-        _article.setCategory(article.getCategory());
-        _article.setTitle(article.getTitle());
-        _article.setBody(article.getBody());
+    @PostMapping("/updateArticle")
+    public String updateArticle( @ModelAttribute Article article) {
+        Article _article = article;
         articleRepository.save(_article);
-        return "/ShowArticles";
+        return "redirect:/articles";
     }
 
 }
