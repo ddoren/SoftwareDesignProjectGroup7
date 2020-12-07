@@ -18,18 +18,18 @@
 </br>
 <div class="row">
     <div class="column">
-        <table th:each="articles:${articles}">
-            <thead><tr><th th:text="${articles.title}"></th></tr></thead>
-            <tbody><tr><td th:text="${articles.body}"></td></tr>
+        <table th:each="articlesTech:${articlesTech}">
+            <thead><tr><th th:text="${articlesTech.title}"></th></tr></thead>
+            <tbody><tr><td th:text="${articlesTech.body}"></td></tr>
             <tr ><td>
                 <div th:switch="${user.permission}" >
                     <div th:case="ADMIN">
-                <a th:href="@{'/ModifyArticle/'+${articles.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
-                <a th:method="delete" th:href="@{'/deleteArticle/'+${articles.articleId}}"><button id="btn-DeleteArticle">Remove</button></a>
+                <a th:href="@{'/ModifyArticle/'+${articlesTech.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
+                <a th:method="delete" th:href="@{'/deleteArticle/'+${articlesTech.articleId}}"><button id="btn-DeleteArticle">Remove</button></a>
             </div>
                 <div th:case="OWNER">
                     <a href="/updateArticle"><button id="">Modify</button></a>
-                    <a  th:href="@{'/deleteArticle/' + ${articles.articleId}}" method="DELETE"><button id="btn-DeleteArticle" >Remove</button></a>
+                    <a  th:href="@{'/deleteArticle/' + ${articlesTech.articleId}}" method="DELETE"><button id="btn-DeleteArticle" >Remove</button></a>
                 </div>
             </td></tr></tbody>
             </br>
@@ -40,14 +40,14 @@
         </table>
     </div>
     <div class="column">
-        <table th:each="articles:${articles}">
-            <thead><tr><th th:text="${articles.title}"></th></tr></thead>
-            <tbody><tr><td th:text="${articles.body}"></td></tr>
+        <table th:each="articlesModelling:${articlesModelling}">
+            <thead><tr><th th:text="${articlesModelling.title}"></th></tr></thead>
+            <tbody><tr><td th:text="${articlesModelling.body}"></td></tr>
             <tr ><td>
                 <div th:switch="${user.permission}" >
                     <div th:case="ADMIN">
-                        <a th:href="@{'/ModifyArticle/'+${articles.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
-                        <a th:method="delete" th:href="@{'/deleteArticle/'+${articles.articleId}}"><button id="btn-DeleteArticle">Remove</button></a>
+                        <a th:href="@{'/ModifyArticle/'+${articlesModelling.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
+                        <a th:method="delete" th:href="@{'/deleteArticle/'+${articlesModelling.articleId}}"><button id="btn-DeleteArticle">Remove</button></a>
                     </div>
                     <div th:case="OWNER">
                         <a href="/updateArticle"><button id="">Modify</button></a>

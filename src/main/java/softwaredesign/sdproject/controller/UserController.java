@@ -41,7 +41,11 @@ public class UserController {
         user=logOutUser;
         return "redirect:/index";
     }
-
+    @GetMapping("register")
+    public String register()
+    {
+        return "registerUser";
+    }
 
     @PostMapping("addUser")
     public ResponseEntity<User> addUser(@ModelAttribute User user1){

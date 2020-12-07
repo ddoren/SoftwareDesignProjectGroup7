@@ -23,7 +23,8 @@ public class ArticleController {
     @GetMapping("/articles")
     public String getAllArticles(Model model){
         List<Article> articleList = articleRepository.findAll();
-        model.addAttribute("articles", articleList);
+        model.addAttribute("articlesTech", articleRepository.findByCategoryContaining("Tech"));
+        model.addAttribute("articlesModelling",articleRepository.findByCategoryContaining("Modelling"));
         model.addAttribute("user", UserController.modelUser());
 
         return "/ShowArticles.html";
