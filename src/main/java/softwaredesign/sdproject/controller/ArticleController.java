@@ -63,7 +63,7 @@ public class ArticleController {
     @PostMapping("/addArticle")
     public String addUser(@ModelAttribute Article _article) {
         articleRepository.save(_article);
-        return "/ShowArticles";
+        return "redirect:/articles";
     }
 
     //Delete Article by ID
