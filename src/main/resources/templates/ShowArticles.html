@@ -40,6 +40,26 @@
         </table>
     </div>
     <div class="column">
+        <table th:each="articles:${articles}">
+            <thead><tr><th th:text="${articles.title}"></th></tr></thead>
+            <tbody><tr><td th:text="${articles.body}"></td></tr>
+            <tr ><td>
+                <div th:switch="${user.permission}" >
+                    <div th:case="ADMIN">
+                        <a th:href="@{'/ModifyArticle/'+${articles.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
+                        <a th:method="delete" th:href="@{'/deleteArticle/'+${articles.articleId}}"><button id="btn-DeleteArticle">Remove</button></a>
+                    </div>
+                    <div th:case="OWNER">
+                        <a href="/updateArticle"><button id="">Modify</button></a>
+                        <a href="/deleteArticle"><button id="">Remove</button></a>
+                    </div>
+            </td></tr></tbody>
+            </br>
+            </br>
+            </br>
+            </br>
+            </br>
+        </table>
 <!--        <table>-->
 <!--            <thead><tr><th></th></tr></thead>-->
 <!--            <tbody><tr><td></td></tr>-->
@@ -53,9 +73,6 @@
 <!--                </br>-->
 <!--                </br>-->
 <!--        </table>-->
-
-</br>
-</br>
     </div>
 </div>
 <div id="placeFooter" th:insert="footer :: footer_template"></div>
