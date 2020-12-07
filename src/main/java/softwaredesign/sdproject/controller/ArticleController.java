@@ -81,4 +81,14 @@ public class ArticleController {
         return "redirect:/articles";
     }
 
+    //Show Articles by Category
+    @GetMapping("/articles/{category}")
+    public String getAllArticlesByCategory(@PathVariable String category, Model model) {
+        List<Article> _articleList = articleRepository.findByCategoryContaining(category);
+        model.addAttribute("articles", _articleList);
+        model.addAttribute("user", UserController.modelUser());
+        return "/ShowArticles.html";
+    }
+
+
 }

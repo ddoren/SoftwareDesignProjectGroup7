@@ -12,7 +12,7 @@
 </div>
 </br>
 </br>
-    <form id="modify" action="/updateArticle" method="post">
+    <form id="modify" action="/updateArticle" method="put">
         <input type="hidden" name="articleId" th:value="${article.articleId}">
         <div><label>Update category</label><br>
             <br><input th:text="${article.category}" list="articleTypes" name="category" placeholder="- select option -" style="text-align: center">

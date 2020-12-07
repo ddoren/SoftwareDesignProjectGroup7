@@ -29,7 +29,7 @@
             </div>
                 <div th:case="OWNER">
                     <a href="/updateArticle"><button id="">Modify</button></a>
-                    <a href="/deleteArticle"><button id="">Remove</button></a>
+                    <a  th:href="@{'/deleteArticle/' + ${articles.articleId}}" method="DELETE"><button id="btn-DeleteArticle" >Remove</button></a>
                 </div>
             </td></tr></tbody>
             </br>
