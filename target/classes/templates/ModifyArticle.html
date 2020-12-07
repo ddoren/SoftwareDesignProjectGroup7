@@ -14,10 +14,15 @@
 </br>
     <form id="modify" action="/updateArticle" method="post">
         <div><label>Update category</label><br>
-        <input type="text" name="category" th:text="${article.category}"></div>
-        <div><label>Update title</label><br>
+            <br><input th:text="${article.category}" list="articleTypes" name="category" placeholder="- select option -" style="text-align: center">
+            <datalist name="category" id="articleTypes">
+                <option name="category" value="Tech">
+                <option name="category" value="Modelling">
+            </datalist></div>
+<!--        <input type="text" name="category" th:text="${article.category}"></div>-->
+        <div><label>Article title (max. 200 ch.)</label><br>
         <input type="text" name="title" th:text="${article.title}"></div>
-        <div><label>Update content</label><br>
+        <div><label>Article content (max. 10.000 ch.)</label><br>
         <input type="text" name="body" th:text="${article.body}"></div>
         <div><input type="submit" value="Save changes"></div><br>
     </form>

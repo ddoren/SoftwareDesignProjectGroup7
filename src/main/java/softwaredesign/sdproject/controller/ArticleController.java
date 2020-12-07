@@ -74,7 +74,7 @@ public class ArticleController {
     }
 
     //Update Article by ID
-    @PutMapping("/updateArticle")
+    @PostMapping("/updateArticle")
     public String updateArticle(@PathVariable("articleId") int articleId, @RequestBody Article article) {
         Optional<Article> articleData = articleRepository.findById(articleId);
         Article _article = articleData.get();
