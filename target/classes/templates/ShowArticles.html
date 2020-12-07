@@ -9,7 +9,10 @@
 <div id="TOP"><div th:replace="menu :: menu_template"></div></div>
 <div id="separation2">
     <div id="c1.2"><a href="/index"><button class="btn-Home" id="btn-Home">HOME</button></a></div>
-    <div id="c2.2"><a th:if="(user.permission==Owner)" href="/CreateArticle"><button id="btn-CreateArticle">NEW</button></a></div>
+    <div id="c2.2">
+        <div><a th:if="${user.permission}==OWNER" href="/CreateArticle"><button id="btn-CreateArticle">NEW</button></a></div>
+        <div><a th:if="${user.permission}==ADMIN" href="/CreateArticle"><button id="btn-CreateArticle">NEW</button></a></div>
+    </div>
 </div>
 </br>
 </br>
@@ -27,7 +30,6 @@
                 <div th:case="OWNER">
                     <a href="/updateArticle"><button id="">Modify</button></a>
                     <a href="/deleteArticle"><button id="">Remove</button></a>
-                </div>
                 </div>
             </td></tr></tbody>
             </br>

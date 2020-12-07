@@ -55,6 +55,15 @@ from here ... */
     width: 11%;
     padding-top: 0.8%;
 }
+#c4{
+    background-color: lightgray;
+    border-radius: 20px;
+    float: left;
+    margin-left: 3%;
+    margin-right: 1%;
+    width: 11%;
+    height: min-content;
+}
 /*  until here */
 
 #separation2{
@@ -72,8 +81,8 @@ from here ... */
 }
 #c2\.2{
     float: right;
-    margin-right: 1%;
-    width: 8.5%;
+    margin-right: 2.5%;
+    width: 3%;
 }
 
 .login{
@@ -301,13 +310,26 @@ footer{
     border: none;
     font-family: "Jazz LET", sans-serif;
     font-weight: bold;
-    width: 180px;
+    width: 90px;
     height: 40px;
     border-radius: 10px;
     font-size: 30px;
     alignment: left;
 }
 
+#btn-currentAccount{
+    background-color: transparent;
+    margin-left: 6%;
+    margin-right: 6%;
+    color: darkslategray;
+    border: none;
+    font-family: "Jazz LET", sans-serif;
+    font-weight: bold;
+    width: 160px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 15px;
+}
 /*This button will be added later*/
 
 /*#btn-Translate{*/
