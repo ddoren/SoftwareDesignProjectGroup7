@@ -9,12 +9,14 @@ public class Comment {
     private int commentId;
     private String comment;
     private Integer articleId;
+    private  int userId;
 public Comment(){}
 
-public Comment(int commentId,String comment,Integer articleId){
+public Comment(int commentId,String comment,Integer articleId,int userId){
     this.commentId=commentId;
     this.comment=comment;
     this.articleId=articleId;
+    this.userId=userId;
 }
     @Id
     @Column(name = "comment_id", nullable = false)
@@ -37,14 +39,17 @@ public Comment(int commentId,String comment,Integer articleId){
     }
 
     @Basic
-    @Column(name = "article_id", nullable = true)
+    @Column(name = "article_id", nullable = false)
     public Integer getArticleId() {
         return articleId;
     }
-
     public void setArticleId(Integer articleId) {
         this.articleId = articleId;
     }
+    @Basic
+    @Column(name = "user_id",nullable = false)
+    public int getUserId(){return userId;}
+    public void setUserId(int userId){this.userId=userId;}
 
     @Override
     public boolean equals(Object o) {

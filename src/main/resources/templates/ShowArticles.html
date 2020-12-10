@@ -22,6 +22,7 @@
             <thead><tr><th th:text="${articlesTech.title}"></th></tr></thead>
             <tbody><tr><td th:text="${articlesTech.body}"></td></tr>
             <tr ><td>
+                <a th:href="@{'/viewOne/' + ${articlesTech.articleId}}"><button>View Article</button></a>
                 <div th:switch="${user.permission}" >
                     <div th:case="ADMIN">
                 <a th:href="@{'/ModifyArticle/'+${articlesTech.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
@@ -44,6 +45,7 @@
             <thead><tr><th th:text="${articlesModelling.title}"></th></tr></thead>
             <tbody><tr><td th:text="${articlesModelling.body}"></td></tr>
             <tr ><td>
+                <a th:href="@{'/viewOne/' + ${articlesModelling.articleId}}"><button>View Article</button></a>
                 <div th:switch="${user.permission}" >
                     <div th:case="ADMIN">
                         <a th:href="@{'/ModifyArticle/'+${articlesModelling.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>

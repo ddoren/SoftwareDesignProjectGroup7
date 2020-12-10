@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalin's Articles</title>
+    <link rel="stylesheet" href="/static/design.css" th:href="@{/design.css}">
+</head>
+<body>
+<div id="TOP"><div th:replace="menu :: menu_template"></div></div>
+<div id="separation2">
+    <div id="c1.2"><a href="/index"><button class="btn-Home" id="btn-Home">HOME</button></a></div>
+</div>
+</br>
+</br>
+<h1 th:text="${article.title}"></h1>
+<p th:text="${article.body}"></p>
+
+<a href="/articles"><button>Cancel</button></a>
+<div th:each="comment:${comments}">
+    <p> Comment</p>
+    <p th:text="${comment.comment}"></p>
+</div>
+<form action="" method="post">
+    <input name="comment" type="text"><br>
+    <input type="submit" value="Input Comment">
+</form>
+<div id="placeFooter" th:insert="footer :: footer_template"></div>
+</body>
+</html>

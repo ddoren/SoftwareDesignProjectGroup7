@@ -6,7 +6,7 @@ import softwaredesign.sdproject.model.Comment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Comment_test {
-    private Comment test_comment = new Comment(1,"Very nice",3);
+    private Comment test_comment = new Comment(1,"Very nice",3,2);
 
     @Test
     void getID(){

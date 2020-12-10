@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import softwaredesign.sdproject.model.Article;
+import softwaredesign.sdproject.model.Comment;
 import softwaredesign.sdproject.model.User;
 import softwaredesign.sdproject.repository.ArticleRepository;
+import softwaredesign.sdproject.repository.CommentRepository;
 import softwaredesign.sdproject.repository.UserRepository;
 
 import java.util.List;
@@ -19,6 +21,8 @@ public class ArticleController {
 
     @Autowired
     ArticleRepository articleRepository;
+    @Autowired
+    CommentRepository commentRepository;
     //Show All Articles
     @GetMapping("/articles")
     public String getAllArticles(Model model){
@@ -27,7 +31,7 @@ public class ArticleController {
         model.addAttribute("articlesModelling",articleRepository.findByCategoryContaining("Modelling"));
         model.addAttribute("user", UserController.modelUser());
 
-        return "/ShowArticles.html";
+        return "/ShowArticles";
     }
 
     //This is the html button for the "About" subpage
@@ -59,7 +63,14 @@ public class ArticleController {
         model.addAttribute("article", articleRepository.findById(articleId).get());
         return "/ModifyArticle";
     }
-
+    @GetMapping("/viewOne/{articleId}")
+    public String viewOne(@PathVariable("articleId") int articleId,Model model){
+        model.addAttribute("user",UserController.modelUser());
+        model.addAttribute("article",articleRepository.getOne(articleId));
+        List<Comment> commentList= commentRepository.findCommentsByArticleId(articleId);
+        model.addAttribute("comments",commentList);
+        return "/viewOne";
+    }
     //Create Article
     @PostMapping("/addArticle")
     public String addUser(@ModelAttribute Article _article) {
