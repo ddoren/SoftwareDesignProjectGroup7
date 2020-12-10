@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalin's Articles</title>
+    <link rel="stylesheet" href="/static/design.css" th:href="@{/design.css}">
+</head>
+<body>
+<div id="TOP"><div th:replace="menu :: menu_template"></div></div>
+<div id="separation2">
+    <div id="c1.2"><a href="/index"><button class="btn-Home" id="btn-Home">HOME</button></a></div>
+</div>
+</br>
+</br>
+<form method="post" action="/registerUser">
+    <input name="email" type="email">
+    <input name="password" type="password">
+    <input name="permission" type="hidden" value="USER" >
+    <input type="submit" value="Register">
+</form>
+<a href="/index"><button>Return</button></a>
+<div id="placeFooter" th:insert="footer :: footer_template"></div>
+</body>
+</html>

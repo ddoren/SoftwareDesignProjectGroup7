@@ -5,10 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import softwaredesign.sdproject.model.User;
 import softwaredesign.sdproject.repository.UserRepository;
 
@@ -35,6 +32,10 @@ public class UserController {
         }
         return "redirect:/index";
     }
+    @GetMapping("/userComment/{userId}")
+    public void userComment(@PathVariable("userId") int userId, Model model){
+    model.addAttribute("email",userRepository.getOne(userId));
+    }
     @GetMapping("logout")
     public String logOut(){
         User logOutUser=new User();
@@ -42,9 +43,15 @@ public class UserController {
         return "redirect:/index";
     }
     @GetMapping("register")
-    public String register()
+    public String register(Model model)
     {
+        model.addAttribute("user",user);
         return "registerUser";
+    }
+    @PostMapping("/registerUser")
+    public String registerUser(@ModelAttribute User user1){
+        userRepository.save(user1);
+        return "redirect:/index";
     }
 
     @PostMapping("addUser")
@@ -74,6 +81,7 @@ public class UserController {
         //model.addAttribute("userList",userList);
         return new ResponseEntity<>(userList,HttpStatus.OK);
     }
+
 
 
 

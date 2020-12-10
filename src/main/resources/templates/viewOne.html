@@ -14,16 +14,19 @@
 </br>
 <h1 th:text="${article.title}"></h1>
 <p th:text="${article.body}"></p>
-
-<a href="/articles"><button>Cancel</button></a>
-<div th:each="comment:${comments}">
-    <p> Comment</p>
+<div th:each="comment,iStat:${comments}">
+   <div  th:text="${userList[iStat.index].email}"></div>
     <p th:text="${comment.comment}"></p>
 </div>
-<form action="" method="post">
-    <input name="comment" type="text"><br>
+
+<form action="/postComment" method="post">
+    <input type="hidden" name="comment_id">
+    <input type="text" name="comment">
+    <input type="hidden" name="articleId" th:value="${article.articleId}">
+    <input type="hidden" name="userId" th:value="${user.userId}">
     <input type="submit" value="Input Comment">
 </form>
-<div id="placeFooter" th:insert="footer :: footer_template"></div>
+    <a href="/articles"><button>Return</button></a>
+    <div id="placeFooter" th:insert="footer :: footer_template"></div>
 </body>
 </html>

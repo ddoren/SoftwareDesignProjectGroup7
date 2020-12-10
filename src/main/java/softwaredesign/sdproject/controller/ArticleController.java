@@ -13,6 +13,7 @@ import softwaredesign.sdproject.repository.ArticleRepository;
 import softwaredesign.sdproject.repository.CommentRepository;
 import softwaredesign.sdproject.repository.UserRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,8 @@ public class ArticleController {
     ArticleRepository articleRepository;
     @Autowired
     CommentRepository commentRepository;
+    @Autowired
+    UserRepository userRepository;
     //Show All Articles
     @GetMapping("/articles")
     public String getAllArticles(Model model){
@@ -63,11 +66,18 @@ public class ArticleController {
         model.addAttribute("article", articleRepository.findById(articleId).get());
         return "/ModifyArticle";
     }
+
     @GetMapping("/viewOne/{articleId}")
     public String viewOne(@PathVariable("articleId") int articleId,Model model){
         model.addAttribute("user",UserController.modelUser());
         model.addAttribute("article",articleRepository.getOne(articleId));
         List<Comment> commentList= commentRepository.findCommentsByArticleId(articleId);
+
+        User[] user =new User[commentList.size()];
+        for(int i=0;i<commentList.size();i++) {
+           user[i]=userRepository.getOne(commentList.get(i).getUserId());
+        }
+        model.addAttribute("userList",user);
         model.addAttribute("comments",commentList);
         return "/viewOne";
     }
@@ -99,8 +109,22 @@ public class ArticleController {
         List<Article> _articleList = articleRepository.findByCategoryContaining(category);
         model.addAttribute("articles", _articleList);
         model.addAttribute("user", UserController.modelUser());
-        return "/ShowArticles.html";
+        return "/ShowArticles";
     }
+    @PostMapping("/postComment")
+    public String postComment(@ModelAttribute("comment") String commentText,@ModelAttribute("articleId") int articleId,@ModelAttribute("user") User user){
+        Comment comment=new Comment();
+        comment.setArticleId(articleId);
+        comment.setComment(commentText);
+        comment.setUserId(user.getUserId());
 
+    commentRepository.save(comment);
+    return "redirect:/index";
+    }
+    @GetMapping("/viewProfile")
+    public String viewProfile(Model model){
+        model.addAttribute("user",UserController.modelUser());
+        return "viewProfile";
+    }
 
 }

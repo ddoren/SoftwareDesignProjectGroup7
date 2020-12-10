@@ -8,11 +8,11 @@ import java.util.Objects;
 public class Comment {
     private int commentId;
     private String comment;
-    private Integer articleId;
+    private int articleId;
     private  int userId;
 public Comment(){}
 
-public Comment(int commentId,String comment,Integer articleId,int userId){
+public Comment(int commentId, String comment, int articleId, int userId){
     this.commentId=commentId;
     this.comment=comment;
     this.articleId=articleId;
@@ -40,15 +40,17 @@ public Comment(int commentId,String comment,Integer articleId,int userId){
 
     @Basic
     @Column(name = "article_id", nullable = false)
-    public Integer getArticleId() {
+    public int getArticleId() {
         return articleId;
     }
-    public void setArticleId(Integer articleId) {
+
+    public void setArticleId(int articleId) {
         this.articleId = articleId;
     }
     @Basic
     @Column(name = "user_id",nullable = false)
     public int getUserId(){return userId;}
+
     public void setUserId(int userId){this.userId=userId;}
 
     @Override

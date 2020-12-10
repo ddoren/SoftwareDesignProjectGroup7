@@ -25,10 +25,10 @@
                 <div><input name="password" type="password" placeholder="Password" style="text-align: center"></div>
                 <div><input type="submit" value="Login"/></div>
                 </form>
-                <a href=""><button>Register</button></a>
+                <a href="/register"><button>Register</button></a>
             </div>
             <div id="c4">
-            <div th:if="${user.email!=null}"><a ><button id="btn-currentAccount"><b th:text="${user.email}"> </b></button></a></div><br>
+            <div th:if="${user.email!=null}"><a href="/viewProfile"><button id="btn-currentAccount"><b th:text="${user.email}"> </b></button></a></div><br>
             <div th:if="${user.email!=null}"><a href="/logout"><button>Log Out</button></a></div><br>
             </div>
         </div>
