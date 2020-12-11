@@ -22,9 +22,9 @@
             </select></div>
 <!--        <input type="text" name="category" th:text="${article.category}"></div>-->
         <div><label>Article title (max. 200 ch.)</label><br>
-        <input type="text" name="title" th:value="${article.title}"></div>
+        <input rows="3" cols="48" wrap="hard"  type="text" name="title" th:value="${article.title}"></div>
         <div><label>Article content (max. 10.000 ch.)</label><br>
-        <input type="text" name="body" th:value="${article.body}"></div>
+        <input rows="3" cols="48" wrap="hard" type="text" name="body" th:value="${article.body}"></div>
         <div><input type="submit" value="Save changes"></div><br>
     </form>
 <a href="/articles"><button>Cancel</button></a>

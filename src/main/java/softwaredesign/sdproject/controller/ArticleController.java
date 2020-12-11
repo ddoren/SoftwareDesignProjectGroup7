@@ -128,4 +128,11 @@ public class ArticleController {
         return "viewProfile";
     }
 
+    @GetMapping("/deleteComment/{commentId}")
+    public String deleteComment(@PathVariable("commentId") int commentId){
+        int articleId=commentRepository.getOne(commentId).getArticleId();
+        commentRepository.delete(commentRepository.getOne(commentId));
+        return "redirect:/viewOne/"+articleId+"";
+    }
+
 }

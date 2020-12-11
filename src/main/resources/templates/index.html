@@ -7,7 +7,7 @@
 </head>
 <body>
 <div th:replace="menu :: menu_template"></div>
-<div id="separation3"><div id="registerColumn"><p id="registerParagraph">Not a member of our website yet? You can register <a href="/register">here</a>.</p></div></div>
+<div th:if="${user.email==null}"id="separation3"><div id="registerColumn"><p id="registerParagraph">Not a member of our website yet? You can register <a href="/register">here</a>.</p></div></div>
 <!--<style>-->
 <!--    #registerColumn{-->
 <!--        transition: transform 1s ease-in-out;-->

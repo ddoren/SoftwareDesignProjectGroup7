@@ -15,13 +15,17 @@
 <div th:each="comment,iStat:${comments}">
    <div  th:text="${userList[iStat.index].email}"></div>
     <p th:text="${comment.comment}"></p>
-    <div th:if="${userList[iStat.index].email==user.email}" >
-    <input>
-    <a th:href="@{/deleteComment/+'${comment.commentId}'}"><button>Delete comment</button></a>
+    <div th:if="${userList[iStat.index].email==user.email} AND ${user.permission=='USER'}" >
+    <a th:href="@{'/deleteComment/'+${comment.commentId} }"><button>Delete comment</button></a>
+        <div id="dynamicCheck">
+            <div id="loadComment"></div>
+            <button type="button" onclick="loadEdit()">Edit</button>
+        </div>
 </div>
     <div th:if="${user.permission=='ADMIN'} OR ${user.permission=='OWNER'}">
-        <a th:href="@{/deleteComment/+'${comment.commentId}'}"><button>Delete comment</button></a>
+        <a th:href="@{'/deleteComment/'+${comment.commentId} }"><button onclick="confirmDelete()">Delete comment</button></a>
     </div>
+
 </div>
 
 <form action="/postComment" method="post">
@@ -33,5 +37,22 @@
 </form>
     <a href="/articles"><button>Return</button></a>
     <div id="placeFooter" th:insert="footer :: footer_template"></div>
+
+
+<script th:inline="javascript">
+    function confirmDelete() {
+        confirm("Are you sure you want to delete this comment?");
+    }
+   // function loadEdit(){
+        // First create a DIV element.
+     //   var txtNewInputBox = document.createElement('div');
+        // Then add the content (a new input box) of the element.
+
+       //     txtNewInputBox.innerHTML = "<form><input th:value='[[${comments.size}]]' type='text' id='newInputBox'><input type='submit' value='Confirm Edit'></form>";
+            // Finally put it where it is supposed to appear.
+         //   document.getElementById("loadComment").appendChild(txtNewInputBox);
+
+  //  }
+</script>
 </body>
 </html>
