@@ -59,10 +59,10 @@ public class UserController {
         userRepository.save(user1);
         return new ResponseEntity<>(user1,HttpStatus.OK);
     }
-    @PostMapping("deleteUser")
-    public ResponseEntity<User> deleteUser(@RequestParam int id){
-        userRepository.delete(userRepository.getOne(id));
-        return new ResponseEntity<>(HttpStatus.OK);
+    @GetMapping("/deleteUser/{userId}")
+    public String deleteUser(@PathVariable("userId") int userId){
+        userRepository.delete(userRepository.getOne(userId));
+        return "redirect:/viewProfile";
     }
     @GetMapping("seeSpecificUser")
     public ResponseEntity<User> seeSpecificUser(@RequestParam("id") int id){
@@ -70,9 +70,11 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
     @PostMapping("updateUser")
-    public ResponseEntity<User> updateUser(@ModelAttribute User user){
-        userRepository.updateUser(user.getEmail(),user.getPassword(),user.getPermission(),user.getUserId());
-        return new ResponseEntity<>(user,HttpStatus.OK);
+    public String updateUser(@ModelAttribute User user1){
+        userRepository.updateUser(user1.getEmail(),user1.getPassword(),user1.getPermission(),user1.getUserId());
+        user.setEmail(user1.getEmail());
+        user.setPassword(user1.getPassword());
+        return "redirect:/viewProfile";
     }
     //Get or Post???
     @PostMapping("allUsers")

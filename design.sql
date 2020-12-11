@@ -37,7 +37,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `system_dev_exam_app`.`users`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `system_dev_exam_app`.`users` (
-  `user_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(70) NOT NULL,
   `password` VARCHAR(20) NOT NULL,
   `permission` VARCHAR(15) NOT NULL,
@@ -55,10 +55,10 @@ CREATE TABLE IF NOT EXISTS `system_dev_exam_app`.`comments` (
   `comment_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `comment` VARCHAR(150) NOT NULL,
   `article_id` INT NOT NULL,
-  `user_id` INT UNSIGNED NOT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`comment_id`),
   UNIQUE INDEX `comment_id` (`comment_id` ASC) VISIBLE,
-  INDEX `fk_comments_articles_idx` (`article_id` ASC) VISIBLE,
+  INDEX `fk_comments_articles_idx` (`article_id` ASC) INVISIBLE,
   INDEX `fk_comments_users1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_comments_articles`
     FOREIGN KEY (`article_id`)
@@ -71,7 +71,6 @@ CREATE TABLE IF NOT EXISTS `system_dev_exam_app`.`comments` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = utf8;
 
 

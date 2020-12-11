@@ -12,7 +12,41 @@
 </div>
 </br>
 </br>
-
+<form th:if="${user.permission=='USER'} OR ${user.permission=='OWNER'}" method="post" action="/updateUser">
+    <input name="userId" type="hidden" th:value="${user.userId}">
+    <input name="email" type="email" th:value="${user.email}">
+    <input name="password" type="password" th:value="${user.password}">
+    <input name="permission" type="hidden" th:value="${user.permission}">
+    <input type="submit" value="Change Information">
+</form>
+<table  th:if="${user.permission=='ADMIN'} OR ${user.permission=='OWNER'}" th:each="users,iStat:${userList}">
+    <div th:if="${users.permission=='USER'}">
+    <thead>
+    <tr th:if="${user.permission=='ADMIN'}">
+    <td >User Id:</td>
+        <td >User Email:</td>
+        <td >User Type:</td>
+        <td ></td>
+    </tr>
+    <tr th:if=" ${user.permission=='OWNER'}">
+     <td>User Email:
+     </td>
+    </tr>
+    </thead>
+<tbody>
+<tr th:if="${user.permission=='ADMIN'}">
+    <td  th:text="${users.userId}"></td>
+    <td  th:text="${users.email}"></td>
+    <td th:text="${users.permission}"></td>
+    <td ><a th:if="users.permission"  th:href="@{'/deleteUser/'+${users.userId}}"><button>Delete User</button></a></td>
+</tr>
+<tr th:if="${users.permission=='USER'} AND ${user.permission=='OWNER'}">
+    <td th:text="${users.email}"></td>
+</tr>
+</tbody>
+    </div>
+</table>
+<div th:if="${user.permission=='OWNER'} OR ${user.permission=='ADMIN'}"th:text="${userList.size-2}"></div>
 <a href="/articles"><button>Return</button></a>
 <div id="placeFooter" th:insert="footer :: footer_template"></div>
 </body>

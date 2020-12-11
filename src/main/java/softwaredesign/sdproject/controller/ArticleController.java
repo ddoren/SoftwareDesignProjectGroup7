@@ -102,7 +102,7 @@ public class ArticleController {
         articleRepository.save(_article);
         return "redirect:/articles";
     }
-
+    //REVERSE THE ARTICLES
     //Show Articles by Category
     @GetMapping("/articles/{category}")
     public String getAllArticlesByCategory(@PathVariable String category, Model model) {
@@ -123,6 +123,7 @@ public class ArticleController {
     }
     @GetMapping("/viewProfile")
     public String viewProfile(Model model){
+        model.addAttribute("userList",userRepository.findAll());
         model.addAttribute("user",UserController.modelUser());
         return "viewProfile";
     }

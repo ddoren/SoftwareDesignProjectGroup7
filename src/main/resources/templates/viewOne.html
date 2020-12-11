@@ -15,6 +15,13 @@
 <div th:each="comment,iStat:${comments}">
    <div  th:text="${userList[iStat.index].email}"></div>
     <p th:text="${comment.comment}"></p>
+    <div th:if="${userList[iStat.index].email==user.email}" >
+    <input>
+    <a th:href="@{/deleteComment/+'${comment.commentId}'}"><button>Delete comment</button></a>
+</div>
+    <div th:if="${user.permission=='ADMIN'} OR ${user.permission=='OWNER'}">
+        <a th:href="@{/deleteComment/+'${comment.commentId}'}"><button>Delete comment</button></a>
+    </div>
 </div>
 
 <form action="/postComment" method="post">
