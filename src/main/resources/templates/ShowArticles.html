@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/static/design.css" th:href="@{/design.css}">
 </head>
 <body>
-<div id="TOP"><div th:replace="menu :: menu_template"></div></div>
+<div th:replace="menu :: menu_template"></div>
 <div id="separation2">
     <div id="c1.2"><a href="/index"><button class="btn-Home" id="btn-Home">HOME</button></a></div>
     <div id="c2.2">
@@ -62,19 +62,6 @@
             </br>
             </br>
         </table>
-<!--        <table>-->
-<!--            <thead><tr><th></th></tr></thead>-->
-<!--            <tbody><tr><td></td></tr>-->
-<!--            <tr><td>-->
-<!--                <a><button>Update</button></a>-->
-<!--                <a><button>Delete article</button></a>-->
-<!--            </td></tr></tbody>-->
-<!--                </br>-->
-<!--                </br>-->
-<!--                </br>-->
-<!--                </br>-->
-<!--                </br>-->
-<!--        </table>-->
     </div>
 </div>
 <div id="placeFooter" th:insert="footer :: footer_template"></div>

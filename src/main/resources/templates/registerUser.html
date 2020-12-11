@@ -12,13 +12,19 @@
 </div>
 </br>
 </br>
-<form method="post" action="/registerUser">
-    <input name="email" type="email">
-    <input name="password" type="password">
-    <input name="permission" type="hidden" value="USER" >
-    <input type="submit" value="Register">
-</form>
-<a href="/index"><button>Return</button></a>
+<div id="articleForm">
+    <table>
+        <thead><tr><th>Register to Catalin's blog</th></tr></thead>
+        <tbody><tr><td>
+            <form id="article" method="post" action="/registerUser">
+                <div><input name="email" type="email" placeholder="E_mail address" style="text-align: center"></div>
+                <div><input name="password" type="password" placeholder="Password" style="text-align: center"></div>
+                <input name="permission" type="hidden" value="USER" >
+                <input type="submit" value="Register" style="margin-right: 20px;"><a href="/index"><button>Cancel</button></a>
+            </form>
+        </td></tr></tbody>
+    </table>
+</div>
 <div id="placeFooter" th:insert="footer :: footer_template"></div>
 </body>
 </html>

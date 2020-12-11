@@ -7,6 +7,15 @@
 </head>
 <body>
 <div th:replace="menu :: menu_template"></div>
+<div id="separation3"><div id="registerColumn"><p id="registerParagraph">Not a member of our website yet? You can register <a href="/register">here</a>.</p></div></div>
+<!--<style>-->
+<!--    #registerColumn{-->
+<!--        transition: transform 1s ease-in-out;-->
+<!--    }-->
+<!--    #separation3:hover #registerColumn{-->
+<!--        transform: translateX(100%);-->
+<!--    }-->
+<!--</style>-->
 </br>
 </br>
 </br>
@@ -17,8 +26,6 @@
 <p>You're home now.</p>
 <p>Relax and take a sip of tea.</p>
 </div>
-
-
 <div id="placeFooter" th:insert="footer :: footer_template"></div>
 </body>
 </html>

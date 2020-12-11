@@ -2,8 +2,8 @@
     <div class="navigation">
         <nav class="flex-container" id="flex-container">
         <div id="separation">
-           <div id="c1"><img src="catalin%20black.png" alt="image"></div>
-           <div id="c2"> <a href="/articles">
+           <div id="c1" style="width:100px;height:100px;"></div>
+           <div id="c2"><a href="/articles">
                     <button class="btn-ShowArticles" id="btn-ShowArticles">
                         ARTICLES
                     </button>
@@ -25,10 +25,11 @@
                 <div><input name="password" type="password" placeholder="Password" style="text-align: center"></div>
                 <div><input type="submit" value="Login"/></div>
                 </form>
+<!--                <a href="/register"><button>Register</button></a>-->
             </div>
             <div id="c4">
-            <div th:if="${user.email!=null}"><a ><button id="btn-currentAccount"><b th:text="${user.email}"> </b></button></a></div><br>
-            <div th:if="${user.email!=null}"><a href="/logout"><button>Log Out</button></a></div><br>
+            <div th:if="${user.email!=null}"><a href="/viewProfile"><button id="btn-currentAccount"><b th:text="${user.email}"> </b></button></a></div>
+            <div th:if="${user.email!=null}"><a href="/logout"><button>Log Out</button></a></div>
             </div>
         </div>
         </nav>
