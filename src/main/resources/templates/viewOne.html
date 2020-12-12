@@ -27,7 +27,9 @@
     </div>
 
 </div>
-
+<div th:each="picture:${picturesList}">
+    <img th:src="@{'/displayImage/'+${picture.pictureId}}">
+</div>
 <form action="/postComment" method="post">
     <input type="hidden" name="comment_id">
     <input type="text" name="comment">
@@ -35,6 +37,7 @@
     <input type="hidden" name="userId" th:value="${user.userId}">
     <input type="submit" value="Input Comment">
 </form>
+
     <a href="/articles"><button>Return</button></a>
     <div id="placeFooter" th:insert="footer :: footer_template"></div>
 

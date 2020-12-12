@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalin's Articles</title>
+    <link rel="stylesheet" href="/static/design.css" th:href="@{/design.css}">
+</head>
+<body>
+<div id="TOP"><div th:replace="menu :: menu_template"></div></div>
+<div id="separation2">
+    <div id="c1.2"><a href="/index"><button class="btn-Home" id="btn-Home">HOME</button></a></div>
+</div>
+</br>
+</br>
+
+<div th:each="picture:${pictures}">
+    <img th:src="@{'/displayImage/'+${picture.pictureId}}">
+</div>
+
+<a href="/articles"><button>Cancel</button></a>
+<div id="placeFooter" th:insert="footer :: footer_template"></div>
+</body>
+</html>

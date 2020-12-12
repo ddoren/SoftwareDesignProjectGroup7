@@ -1,19 +1,31 @@
 package softwaredesign.sdproject.controller;
 
+import org.hibernate.engine.jdbc.StreamUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import softwaredesign.sdproject.model.Article;
 import softwaredesign.sdproject.model.Comment;
+import softwaredesign.sdproject.model.Pictures;
 import softwaredesign.sdproject.model.User;
 import softwaredesign.sdproject.repository.ArticleRepository;
 import softwaredesign.sdproject.repository.CommentRepository;
+import softwaredesign.sdproject.repository.PicturesRepository;
 import softwaredesign.sdproject.repository.UserRepository;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +38,8 @@ public class ArticleController {
     CommentRepository commentRepository;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    PicturesRepository picturesRepository;
     //Show All Articles
     @GetMapping("/articles")
     public String getAllArticles(Model model){
@@ -72,14 +86,30 @@ public class ArticleController {
         model.addAttribute("user",UserController.modelUser());
         model.addAttribute("article",articleRepository.getOne(articleId));
         List<Comment> commentList= commentRepository.findCommentsByArticleId(articleId);
-
+        List<Pictures> picturesList= picturesRepository.findPicturesByArticleId(articleId);
         User[] user =new User[commentList.size()];
         for(int i=0;i<commentList.size();i++) {
            user[i]=userRepository.getOne(commentList.get(i).getUserId());
         }
+        model.addAttribute("picturesList",picturesList);
         model.addAttribute("userList",user);
         model.addAttribute("comments",commentList);
         return "/viewOne";
+    }
+    @GetMapping(value = "/displayImage/{imageId}",produces = MediaType.IMAGE_JPEG_VALUE)
+    public void showImage(@PathVariable("imageId") int imageId,HttpServletResponse response) throws IOException, SQLException {
+        Blob image= picturesRepository.getOne(imageId).getContent();
+
+
+            StreamUtils.copy(image.getBinaryStream(), response.getOutputStream());
+
+
+    }
+    @GetMapping("/editPictures/{articleId}")
+    public String showImage(@PathVariable("articleId") int articleId,Model model){
+        model.addAttribute("user",UserController.modelUser());
+        model.addAttribute("pictures",picturesRepository.findPicturesByArticleId(articleId));
+        return "/editPictures";
     }
     //Create Article
     @PostMapping("/addArticle")

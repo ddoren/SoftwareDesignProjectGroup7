@@ -27,6 +27,7 @@
         <input rows="3" cols="48" wrap="hard" type="text" name="body" th:value="${article.body}"></div>
         <div><input type="submit" value="Save changes"></div><br>
     </form>
+<a th:href="@{'/editPictures/'+${article.articleId}}"><button>Change Visual Content</button></a>
 <a href="/articles"><button>Cancel</button></a>
 <div id="placeFooter" th:insert="footer :: footer_template"></div>
 </body>

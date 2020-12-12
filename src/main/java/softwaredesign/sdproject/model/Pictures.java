@@ -1,6 +1,7 @@
 package softwaredesign.sdproject.model;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -8,10 +9,20 @@ import java.util.Objects;
 @Table(name = "pictures",schema = "system_dev_exam_app")
 public class Pictures {
     private int pictureId;
-    private byte[] content;
+    private Blob content;
     private int articleId;
+
+    public Pictures() {
+    }
+
+    public Pictures(int pictureId, Blob content, int articleId) {
+        this.pictureId = pictureId;
+        this.content = content;
+        this.articleId = articleId;
+    }
+
     @Id
-    @Column(name ="pictureId" ,nullable = false)
+    @Column(name ="picture_id" ,nullable = false)
     public int getPictureId() {
         return pictureId;
     }
@@ -21,11 +32,11 @@ public class Pictures {
     }
     @Lob
     @Column(name = "content",nullable = false)
-    public byte[] getContent() {
+    public Blob getContent() {
         return content;
     }
 
-    public void setContent(byte[] content) {
+    public void setContent(Blob content) {
         this.content = content;
     }
     @Basic()
@@ -45,21 +56,19 @@ public class Pictures {
         Pictures pictures = (Pictures) o;
         return pictureId == pictures.pictureId &&
                 articleId == pictures.articleId &&
-                Arrays.equals(content, pictures.content);
+                Objects.equals(content, pictures.content);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(pictureId, articleId);
-        result = 31 * result + Arrays.hashCode(content);
-        return result;
+        return Objects.hash(pictureId, content, articleId);
     }
 
     @Override
     public String toString() {
         return "Pictures{" +
                 "pictureId=" + pictureId +
-                ", content=" + Arrays.toString(content) +
+                ", content=" + content +
                 ", articleId=" + articleId +
                 '}';
     }
