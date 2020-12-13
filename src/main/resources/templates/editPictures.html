@@ -13,10 +13,24 @@
 </br>
 </br>
 
-<div th:each="picture:${pictures}">
-    <img th:src="@{'/displayImage/'+${picture.pictureId}}">
-</div>
+<table th:each="picture:${pictures}">
+    <thead>
+    <tr>Picture Id:</tr>
+    <tr>Picture:</tr>
+    </thead>
+    <tbody>
+    <td th:text="${picture.pictureId}"></td>
+    <td><img th:src="@{'/displayImage/'+${picture.pictureId}}"></td>
+    <td><a th:href="@{'/deleteImage/'+${picture.pictureId}}"><button>Delete Picture</button></a>
+    </td>
 
+    </tbody>
+</table>
+<form method="post"  enctype="multipart/form-data" th:action="@{/upload}">
+    <input type="file" th:name="content">
+    <input type="hidden" name="articleId" th:value="${article.articleId}">
+    <input type="submit" value="Add picture">
+</form>
 <a href="/articles"><button>Cancel</button></a>
 <div id="placeFooter" th:insert="footer :: footer_template"></div>
 </body>

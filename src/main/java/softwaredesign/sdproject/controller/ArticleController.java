@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import softwaredesign.sdproject.model.Article;
 import softwaredesign.sdproject.model.Comment;
 import softwaredesign.sdproject.model.Pictures;
@@ -108,14 +109,49 @@ public class ArticleController {
     @GetMapping("/editPictures/{articleId}")
     public String showImage(@PathVariable("articleId") int articleId,Model model){
         model.addAttribute("user",UserController.modelUser());
+        model.addAttribute("article",articleRepository.getOne(articleId));
         model.addAttribute("pictures",picturesRepository.findPicturesByArticleId(articleId));
         return "/editPictures";
     }
+    @GetMapping("/deleteImage/{pictureId}")
+    public String deleteImage(@PathVariable("pictureId") int imageId){
+        Pictures pictures= picturesRepository.getOne(imageId);
+        picturesRepository.deleteById(imageId);
+        return "redirect:/editPictures/"+pictures.getArticleId()+"";
+    }
+    @PostMapping("/upload")
+    public String uploadPicture(@RequestParam("articleId") int articleId,@RequestParam("content")MultipartFile multipartFile)  {
+        //convert the file to byte[] then the byte[] to a blob and save it in the repo
+        byte[] bytePicture;
+        Pictures pictures= new Pictures();
+        pictures.setArticleId(articleId);
+        try {
+            bytePicture = multipartFile.getBytes();
+            Blob blob = new javax.sql.rowset.serial.SerialBlob(bytePicture);
+            pictures.setContent(blob);
+            picturesRepository.save(pictures);
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+            return "redirect:/index";
+        }
+
+
+
+        return "redirect:/viewOne/"+articleId+"";
+    }
+
+
     //Create Article
     @PostMapping("/addArticle")
     public String addUser(@ModelAttribute Article _article) {
         articleRepository.save(_article);
-        return "redirect:/articles";
+        List<Article> articlesList=articleRepository.findAll();
+        for(Article article:articlesList){
+            if (article.getBody().equalsIgnoreCase(_article.getBody())) {
+                _article.setArticleId(article.getArticleId());
+            }
+        }
+        return "redirect:/editPictures/"+_article.getArticleId()+"";
     }
 
     //Delete Article by ID
