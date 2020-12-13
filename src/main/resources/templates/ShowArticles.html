@@ -17,20 +17,21 @@
 </br>
 </br>
 <div class="row">
+
+<!--  Here is the column showing the TECH ARTICLES  -->
     <div class="column">
         <table th:each="articlesTech:${articlesTech}">
             <thead><tr><th th:text="${articlesTech.title}"></th></tr></thead>
-            <tbody><tr><td th:text="${articlesTech.body}"></td></tr>
-            <tr ><td>
-                <a th:href="@{'/viewOne/' + ${articlesTech.articleId}}"><button>View Article</button></a>
+            <tbody style="background-color:lightgray;"><tr><td th:text="${articlesTech.body}"></td></tr>
+            <tr><td><a th:href="@{'/viewOne/' + ${articlesTech.articleId}}"><button>View Article</button></a>
                 <div th:switch="${user.permission}" >
                     <div th:case="ADMIN">
                 <a th:href="@{'/ModifyArticle/'+${articlesTech.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
                 <a th:method="delete" th:href="@{'/deleteArticle/'+${articlesTech.articleId}}"><button id="btn-DeleteArticle">Remove</button></a>
-            </div>
+                </div>
                 <div th:case="OWNER">
                     <a href="/updateArticle"><button id="">Modify</button></a>
-                    <a  th:href="@{'/deleteArticle/' + ${articlesTech.articleId}}" method="DELETE"><button id="btn-DeleteArticle" >Remove</button></a>
+                    <a  th:href="@{'/deleteArticle/' + ${articlesTech.articleId}}" method="DELETE"><button onclick= id="btn-DeleteArticle">Remove</button></a>
                 </div>
             </td></tr></tbody>
             </br>
@@ -40,10 +41,12 @@
             </br>
         </table>
     </div>
+
+<!--  Here is the column showing the MODELLING ARTICLES  -->
     <div class="column">
         <table th:each="articlesModelling:${articlesModelling}">
             <thead><tr><th th:text="${articlesModelling.title}"></th></tr></thead>
-            <tbody><tr><td th:text="${articlesModelling.body}"></td></tr>
+            <tbody style="background-color:lightgray;"><tr><td th:text="${articlesModelling.body}"></td></tr>
             <tr ><td>
                 <a th:href="@{'/viewOne/' + ${articlesModelling.articleId}}"><button>View Article</button></a>
                 <div th:switch="${user.permission}" >

@@ -23,13 +23,20 @@
                 <form method="post" action="/logIn" >
                 <div><input name="email" type="email" placeholder="E_mail address" style="text-align: center"></div>
                 <div><input name="password" type="password" placeholder="Password" style="text-align: center"></div>
-                <div><input type="submit" value="Login"/></div>
+                <div><input type="submit" value="Login" style="background-color:lightgoldenrodyellow;border-radius:5px;"/></div>
                 </form>
-<!--                <a href="/register"><button>Register</button></a>-->
             </div>
             <div id="c4">
-            <div th:if="${user.email!=null}"><a href="/viewProfile"><button id="btn-currentAccount"><b th:text="${user.email}"> </b></button></a></div>
-            <div th:if="${user.email!=null}"><a href="/logout"><button>Log Out</button></a></div>
+            <div th:if="${user.email!=null}">
+                <a href="/viewProfile">
+                    <button id="btn-currentAccount"><b th:text="${user.email}"> </b></button>
+                </a>
+            </div>
+            <div th:if="${user.email!=null}" style="padding-bottom: 5px;">
+                <a href="/logout">
+                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;">Log Out</button>
+                </a>
+            </div>
             </div>
         </div>
         </nav>

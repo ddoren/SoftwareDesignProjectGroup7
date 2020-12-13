@@ -7,39 +7,78 @@
 </head>
 <body>
 <div id="TOP"><div th:replace="menu :: menu_template"></div></div>
-<div id="separation2"><div id="c1.2"><a href="/index"><button class="btn-Home" id="btn-Home">HOME</button></a></div></div></div>
-</br>
-</br>
-<h1 th:text="${article.title}"></h1>
-<p th:text="${article.body}"></p>
-<div th:each="comment,iStat:${comments}">
-   <div  th:text="${userList[iStat.index].email}"></div>
-    <p th:text="${comment.comment}"></p>
-    <div th:if="${userList[iStat.index].email==user.email} AND ${user.permission=='USER'}" >
-    <a th:href="@{'/deleteComment/'+${comment.commentId} }"><button>Delete comment</button></a>
-        <div id="dynamicCheck">
-            <div id="loadComment"></div>
-            <button type="button" onclick="loadEdit()">Edit</button>
-        </div>
+<div id="separation2">
+    <div id="c1.2"><a href="/index"><button class="btn-Home" id="btn-Home">HOME</button></a></div>
+    <div id="c3.2"><a href="/articles"><button id="btn-Return">Return</button></a></div>
 </div>
-    <div th:if="${user.permission=='ADMIN'} OR ${user.permission=='OWNER'}">
-        <a th:href="@{'/deleteComment/'+${comment.commentId} }"><button onclick="confirmDelete()">Delete comment</button></a>
-    </div>
+</br>
+</br>
+<div style="max-width:80%;min-width:20%;text-decoration:none;margin-left:20%;margin-right:20%;">
+    <table style="border:none;width:unset;">
 
+        <!--  This part manages the table cell(s) for the ARTICLE TITLE & BODY  -->
+        <thead>
+            <tr>
+                <th style="color:lightgray;">
+                    <h1 th:text="${article.title}"></h1>
+                </th>
+            </tr>
+        </thead>
+        <br>
+            <tr>
+                <td style="border-bottom-left-radius:20px;border-bottom-right-radius:20px;
+            width:100%;background-color:lightgray;margin-left:10%;margin-right:10%;">
+                    <p th:text="${article.body}"></p>
+                </td>
+            </tr>
+
+            <!--  This part manages the table cell(s) to DISPLAY COMMENTS  -->
+            <tr th:each="comment,iStat:${comments}"
+                style="background-color:lightgoldenrodyellow;width:50%;float:left;padding:3px;
+                margin:10px;border-radius:20px;">
+                <td>
+                    <p th:text="${userList[iStat.index].email} + ' wrote:'"
+                       style="color:darkslategray;text-align:left;font-size:13px;
+                        font-weight:bold;margin-top:2px;margin-bottom:2px;padding-left:10px;"></p>
+                    <p th:text="${comment.comment}" style="font-size:18px;font-weight:lighter;
+                    font-family: sans-serif;padding-left:10px;"></p>
+                    <div th:if="${userList[iStat.index].email==user.email} AND ${user.permission=='USER'}">
+                        <a th:href="@{'/deleteComment/'+${comment.commentId} }"><button>Delete comment</button></a>
+                        <div id="dynamicCheck">
+                            <div id="loadComment"></div><button type="button" onclick="loadEdit()">Edit</button>
+                        </div>
+                    </div>
+                    <div th:if="${user.permission=='ADMIN'} OR ${user.permission=='OWNER'}">
+                        <a th:href="@{'/deleteComment/'+${comment.commentId} }"><button onclick="confirmDelete()">Delete comment</button></a>
+                    </div>
+                </td>
+            </tr>
+
+            <!--  This part manages the table cell(s) to POST NEW COMMENT -->
+            <tr style="width:50%;float:left;padding:3px;
+                margin:5px;border-radius:10px;">
+                <td>
+                    <form action="/postComment" method="post" style="margin-top:5px;margin-bottom:5px;
+                    border-left:5px;border-right:5px;margin-left:25%;">
+                        <input type="hidden" name="comment_id">
+                        <textarea datatype="text" name="comment" rows="3"
+                                  cols="48" wrap="hard" placeholder="- write your opinion here -"
+                                  style="text-align:center;background-color: ghostwhite;border-radius:5px;"></textarea>
+                        <input type="hidden" name="articleId" th:value="${article.articleId}">
+                        <input type="hidden" name="userId" th:value="${user.userId}">
+                        <input type="submit" value="Input Comment" style="">
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
+
+
 <div th:each="picture:${picturesList}">
     <img th:src="@{'/displayImage/'+${picture.pictureId}}">
 </div>
-<form action="/postComment" method="post">
-    <input type="hidden" name="comment_id">
-    <input type="text" name="comment">
-    <input type="hidden" name="articleId" th:value="${article.articleId}">
-    <input type="hidden" name="userId" th:value="${user.userId}">
-    <input type="submit" value="Input Comment">
-</form>
-
-    <a href="/articles"><button>Return</button></a>
-    <div id="placeFooter" th:insert="footer :: footer_template"></div>
+<div id="placeFooter" th:insert="footer :: footer_template"></div>
 
 
 <script th:inline="javascript">
