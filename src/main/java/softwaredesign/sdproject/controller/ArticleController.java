@@ -48,7 +48,6 @@ public class ArticleController {
         model.addAttribute("articlesTech", articleRepository.findByCategoryContaining("Tech"));
         model.addAttribute("articlesModelling",articleRepository.findByCategoryContaining("Modelling"));
         model.addAttribute("user", UserController.modelUser());
-
         return "/ShowArticles";
     }
 
@@ -56,7 +55,6 @@ public class ArticleController {
     @GetMapping("/about")
     public String getAbout(Model model){
         model.addAttribute("user", UserController.modelUser());
-
         return "/about";
     }
 
@@ -100,11 +98,7 @@ public class ArticleController {
     @GetMapping(value = "/displayImage/{imageId}",produces = MediaType.IMAGE_JPEG_VALUE)
     public void showImage(@PathVariable("imageId") int imageId,HttpServletResponse response) throws IOException, SQLException {
         Blob image= picturesRepository.getOne(imageId).getContent();
-
-
-            StreamUtils.copy(image.getBinaryStream(), response.getOutputStream());
-
-
+        StreamUtils.copy(image.getBinaryStream(), response.getOutputStream());
     }
     @GetMapping("/editPictures/{articleId}")
     public String showImage(@PathVariable("articleId") int articleId,Model model){
@@ -179,13 +173,13 @@ public class ArticleController {
     }
     @PostMapping("/postComment")
     public String postComment(@ModelAttribute("comment") String commentText,@ModelAttribute("articleId") int articleId,@ModelAttribute("user") User user){
-        Comment comment=new Comment();
-        comment.setArticleId(articleId);
-        comment.setComment(commentText);
-        comment.setUserId(user.getUserId());
+            Comment comment = new Comment();
+            comment.setArticleId(articleId);
+            comment.setComment(commentText);
+            comment.setUserId(user.getUserId());
+            commentRepository.save(comment);
 
-    commentRepository.save(comment);
-    return "redirect:/index";
+    return "redirect:/viewOne/"+articleId+"";
     }
 
     @GetMapping("/viewProfile")
@@ -194,12 +188,10 @@ public class ArticleController {
         model.addAttribute("user",UserController.modelUser());
         return "viewProfile";
     }
-
     @GetMapping("/deleteComment/{commentId}")
     public String deleteComment(@PathVariable("commentId") int commentId){
         int articleId=commentRepository.getOne(commentId).getArticleId();
         commentRepository.delete(commentRepository.getOne(commentId));
         return "redirect:/viewOne/"+articleId+"";
     }
-
 }

@@ -82,7 +82,7 @@
                                     <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:left;margin-left:205px;margin-bottom:5px;">Modify</button>
                                 </a>
                                 <a th:method="delete" th:href="@{'/deleteArticle/'+${articlesModelling.articleId}}">
-                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:right;margin-right:195px;margin-bottom:5px;">Remove</button>
+                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:right;margin-right:195px;margin-bottom:5px;" onclick="return confirmDelete()">Remove</button>
                                 </a>
                             </div>
                             <div th:case="OWNER">
@@ -90,7 +90,7 @@
                                     <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:left;margin-left:205px;margin-bottom:5px;">Modify</button>
                                 </a>
                                 <a th:method="delete" th:href="@{'/deleteArticle/'+${articlesModelling.articleId}}">
-                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:right;margin-right:195px;margin-bottom:5px;">Remove</button>
+                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:right;margin-right:195px;margin-bottom:5px;" onclick="return confirmDelete()">Remove</button>
                                 </a>
                             </div>
                         </div>
@@ -101,5 +101,17 @@
     </div>
 </div>
 <div id="placeFooter" th:insert="footer :: footer_template"></div>
+
+<script th:inline="javascript">
+    function confirmDelete() {
+
+        var x = confirm("Are you sure you want to delete?");
+        if (x)
+            return true;
+        else
+            return false;
+
+    }
+    </script>
 </body>
 </html>

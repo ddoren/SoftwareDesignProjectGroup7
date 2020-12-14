@@ -22,7 +22,7 @@
     <tbody>
     <td th:text="${picture.pictureId}"></td>
     <td><img th:src="@{'/displayImage/'+${picture.pictureId}}"></td>
-    <td><a th:href="@{'/deleteImage/'+${picture.pictureId}}"><button>Delete Picture</button></a>
+    <td><a th:href="@{'/deleteImage/'+${picture.pictureId}}"><button onclick="return confirmDelete()">Delete Picture</button></a>
     </td>
 
     </tbody>
@@ -38,5 +38,16 @@
     <input type="submit" value="Add picture" style="background-color:lightgoldenrodyellow;border-radius:5px;margin:6px;"><br><br>
 </form>
 <div id="placeFooter" th:insert="footer :: footer_template"></div>
+<script th:inline="javascript">
+    function confirmDelete() {
+
+        var x = confirm("Are you sure you want to delete?");
+        if (x)
+            return true;
+        else
+            return false;
+
+    }
+    </script>
 </body>
 </html>
