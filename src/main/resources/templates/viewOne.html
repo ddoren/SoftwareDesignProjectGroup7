@@ -49,11 +49,13 @@
                         <a style="float:left!important;margin-left:0;object-position:left;" th:href="@{'/deleteComment/'+${comment.commentId} }">
                             <button style="float:left;margin-left:5px;background-color:lightgoldenrodyellow;border-radius:5px;" onclick="return confirmDelete()">Delete comment</button>
                         </a>
+                    </div>
                     <div th:if="${user.permission=='ADMIN'} OR ${user.permission=='OWNER'}">
-                        <a th:href="@{'/deleteComment/'+${comment.commentId} }">
+                        <a th:href="@{'/deleteComment/'+${comment.commentId}}">
                             <button style="float:left;margin-left:5px;background-color:lightgoldenrodyellow;border-radius:5px;" onclick="return confirmDelete()">Delete comment</button>
                         </a>
                     </div>
+
                 </td>
             </tr>
 
