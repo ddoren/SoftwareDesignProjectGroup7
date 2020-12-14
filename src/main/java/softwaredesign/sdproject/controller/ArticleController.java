@@ -187,6 +187,7 @@ public class ArticleController {
     commentRepository.save(comment);
     return "redirect:/index";
     }
+
     @GetMapping("/viewProfile")
     public String viewProfile(Model model){
         model.addAttribute("userList",userRepository.findAll());

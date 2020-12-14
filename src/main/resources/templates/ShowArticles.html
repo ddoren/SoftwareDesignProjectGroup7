@@ -16,55 +16,87 @@
 </div>
 </br>
 </br>
-<div class="row">
+<div class="row" style="margin-top:100px;">
 
 <!--  Here is the column showing the TECH ARTICLES  -->
     <div class="column">
-        <table th:each="articlesTech:${articlesTech}">
-            <thead><tr><th th:text="${articlesTech.title}"></th></tr></thead>
-            <tbody style="background-color:lightgray;"><tr><td th:text="${articlesTech.body}"></td></tr>
-            <tr><td><a th:href="@{'/viewOne/' + ${articlesTech.articleId}}"><button>View Article</button></a>
-                <div th:switch="${user.permission}" >
-                    <div th:case="ADMIN">
-                <a th:href="@{'/ModifyArticle/'+${articlesTech.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
-                <a th:method="delete" th:href="@{'/deleteArticle/'+${articlesTech.articleId}}"><button id="btn-DeleteArticle">Remove</button></a>
-                </div>
-                <div th:case="OWNER">
-                    <a href="/updateArticle"><button id="">Modify</button></a>
-                    <a  th:href="@{'/deleteArticle/' + ${articlesTech.articleId}}" method="DELETE"><button onclick= id="btn-DeleteArticle">Remove</button></a>
-                </div>
-            </td></tr></tbody>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
+        <table th:each="articlesTech:${articlesTech}" style="margin-bottom:100px;">
+            <thead>
+                <tr>
+                    <th th:text="${articlesTech.title}"></th>
+                </tr>
+            </thead>
+            <tbody style="background-color:lightgray;">
+                <tr>
+                    <td id="showArticles" th:text="${articlesTech.body}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a th:href="@{'/viewOne/' + ${articlesTech.articleId}}">
+                            <button style="background-color:lightgoldenrodyellow;border-radius:5px;">View Article</button>
+                        </a>
+                        <div style="margin-top:10px;margin-bottom:10px;" th:switch="${user.permission}">
+                            <div th:case="ADMIN">
+                                <a th:href="@{'/ModifyArticle/'+${articlesTech.articleId}}">
+                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:left;margin-left:205px;margin-bottom:5px;">Modify</button>
+                                </a>
+                                <a th:method="delete" th:href="@{'/deleteArticle/'+${articlesTech.articleId}}">
+                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:right;margin-right:195px;margin-bottom:5px;">Remove</button>
+                                </a>
+                            </div>
+                            <div th:case="OWNER">
+                                <a href="/updateArticle">
+                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:left;margin-left:205px;margin-bottom:5px;">Modify</button>
+                                </a>
+                                <a  th:href="@{'/deleteArticle/' + ${articlesTech.articleId}}" method="DELETE">
+                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:right;margin-right:195px;margin-bottom:5px;">Remove</button>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 
 <!--  Here is the column showing the MODELLING ARTICLES  -->
     <div class="column">
-        <table th:each="articlesModelling:${articlesModelling}">
-            <thead><tr><th th:text="${articlesModelling.title}"></th></tr></thead>
-            <tbody style="background-color:lightgray;"><tr><td th:text="${articlesModelling.body}"></td></tr>
-            <tr ><td>
-                <a th:href="@{'/viewOne/' + ${articlesModelling.articleId}}"><button>View Article</button></a>
-                <div th:switch="${user.permission}" >
-                    <div th:case="ADMIN">
-                        <a th:href="@{'/ModifyArticle/'+${articlesModelling.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
-                        <a th:method="delete" th:href="@{'/deleteArticle/'+${articlesModelling.articleId}}"><button id="btn-DeleteArticle">Remove</button></a>
-                    </div>
-                    <div th:case="OWNER">
-                        <a th:href="@{'/ModifyArticle/'+${articlesModelling.articleId}}"><button id="btn-UpdateArticle">Modify</button></a>
-                        <a th:method="delete" th:href="@{'/deleteArticle/'+${articlesModelling.articleId}}"><button id="btn-DeleteArticle">Remove</button></a>
-                    </div>
-            </td></tr>
+        <table th:each="articlesModelling:${articlesModelling}" style="margin-bottom:100px;">
+            <thead>
+                <tr>
+                    <th th:text="${articlesModelling.title}"></th>
+                </tr>
+            </thead>
+            <tbody style="background-color:lightgray;">
+                <tr>
+                    <td id="showArticles" th:text="${articlesModelling.body}"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <a th:href="@{'/viewOne/' + ${articlesModelling.articleId}}">
+                            <button style="background-color:lightgoldenrodyellow;border-radius:5px;">View Article</button>
+                        </a>
+                        <div style="margin-top:10px;margin-bottom:10px;" th:switch="${user.permission}">
+                            <div th:case="ADMIN">
+                                <a th:href="@{'/ModifyArticle/'+${articlesModelling.articleId}}">
+                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:left;margin-left:205px;margin-bottom:5px;">Modify</button>
+                                </a>
+                                <a th:method="delete" th:href="@{'/deleteArticle/'+${articlesModelling.articleId}}">
+                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:right;margin-right:195px;margin-bottom:5px;">Remove</button>
+                                </a>
+                            </div>
+                            <div th:case="OWNER">
+                                <a th:href="@{'/ModifyArticle/'+${articlesModelling.articleId}}">
+                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:left;margin-left:205px;margin-bottom:5px;">Modify</button>
+                                </a>
+                                <a th:method="delete" th:href="@{'/deleteArticle/'+${articlesModelling.articleId}}">
+                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:right;margin-right:195px;margin-bottom:5px;">Remove</button>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
         </table>
     </div>
 </div>

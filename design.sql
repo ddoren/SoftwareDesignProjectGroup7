@@ -50,7 +50,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `system_dev_exam_app`.`comments` (
   `comment_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `comment` VARCHAR(150) NOT NULL,
+  `comment` VARCHAR(300) NOT NULL,
   `article_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`comment_id`),

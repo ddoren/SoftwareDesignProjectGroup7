@@ -9,26 +9,42 @@
 <div id="TOP"><div th:replace="menu :: menu_template"></div></div>
 <div id="separation2">
     <div id="c1.2"><a href="/index"><button class="btn-Home" id="btn-Home">HOME</button></a></div>
+    <div id="c4.2"><a href="/articles"><button id="btn-Cancel">Cancel changes</button></a></div>
 </div>
 </br>
 </br>
-    <form id="modify" action="/updateArticle" method="post">
-        <input type="hidden" name="articleId" th:value="${article.articleId}">
-        <div><label>Update category</label><br>
-            <br>
-            <select name="category" id="articleTypes">
-                <option name="category"th:text="Tech" th:value="Tech">
-                <option name="category" th:text="Modelling"th:value="Modelling">
-            </select></div>
-<!--        <input type="text" name="category" th:text="${article.category}"></div>-->
-        <div><label>Article title (max. 200 ch.)</label><br>
-        <input rows="3" cols="48" wrap="hard"  type="text" name="title" th:value="${article.title}"></div>
-        <div><label>Article content (max. 10.000 ch.)</label><br>
-        <input rows="3" cols="48" wrap="hard" type="text" name="body" th:value="${article.body}"></div>
-        <div><input type="submit" value="Save changes"></div><br>
-    </form>
-<a th:href="@{'/editPictures/'+${article.articleId}}"><button>Change Visual Content</button></a>
-<a href="/articles"><button>Cancel</button></a>
+<div style="position:center;margin-left:39.2%;margin-right:39.2%;">
+    <table>
+        <thead><tr><th>Article modification</th></tr></thead>
+        <tbody>
+            <tr>
+                <td style="background-color:lightgray">
+                    <form style="position:center;alignment:center;object-position:center;" action="/updateArticle" method="post">
+                        <input type="hidden" name="articleId" th:value="${article.articleId}">
+                        <div><label>Update category</label></div>
+                            <div><select name="category" id="articleTypes">
+                                <option name="category"th:text="Tech" th:value="Tech">
+                                <option name="category" th:text="Modelling"th:value="Modelling">
+                            </select></div><br>
+                        <div><label>Article title (max. 200 ch.)</label></div><br>
+                            <div><textarea datatype="text" name="title" rows="3" cols="48"
+                                      wrap="hard" th:text="${article.title}" style="text-align:center;alignment:center;"></textarea></div><br>
+                        <div><label>Article content (max. 10.000 ch.)</label></div><br>
+                            <div><textarea datatype="text" name="body" rows="10" cols="48"
+                                           wrap="hard" th:text="${article.body}" style="text-align:center;alignment:center;"></textarea></div>
+                        <div>
+                            <input style="background-color:lightgoldenrodyellow;border-radius:5px;margin-right:30px;" type="submit" value="Save changes">
+                                <a th:href="@{'/editPictures/'+${article.articleId}}">
+                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;">Modify picture(s)</button>
+                                </a>
+                        </div><br>
+                    </form>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <div id="placeFooter" th:insert="footer :: footer_template"></div>
 </body>
 </html>
