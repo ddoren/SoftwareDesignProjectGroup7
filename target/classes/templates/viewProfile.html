@@ -57,7 +57,7 @@
                         <td th:text="${users.permission}" style="width:150px;font-size:20px;border-radius:2px;background-color:lightgray;padding-left:0;padding-right:0;"></td>
                         <td style="width:150px;font-size:20px;border-radius:2px;background-color:lightgray;padding-left:0;padding-right:0;">
                             <a th:if="users.permission"  th:href="@{'/deleteUser/'+${users.userId}}">
-                            <button style="background-color:lightgoldenrodyellow;border-radius:5px;">Delete User</button>
+                            <button onclick="return confirmDelete()" style="background-color:lightgoldenrodyellow;border-radius:5px;">Delete User</button>
                             </a>
                         </td>
                     </tr>
@@ -81,5 +81,16 @@
 </div>
 
 <div id="placeFooter" th:insert="footer :: footer_template"></div>
+<script th:inline="javascript">
+    function confirmDelete() {
+
+        var x = confirm("Are you sure you want to delete?");
+        if (x)
+            return true;
+        else
+            return false;
+
+    }
+</script>
 </body>
 </html>

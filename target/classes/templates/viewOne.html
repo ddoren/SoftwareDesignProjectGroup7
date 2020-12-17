@@ -33,8 +33,8 @@
                         <img th:src="@{'/displayImage/'+${picture.pictureId}}" style="display:block;width:100%;height:100%;">
                     </div>
                 </td>
-            </tr>
 
+            </tr>
             <!--  This part manages the table cell(s) to DISPLAY COMMENTS  -->
             <tr th:each="comment,iStat:${comments}"
                 style="background-color:lightgoldenrodyellow;width:50%;float:left;padding:3px;
@@ -44,21 +44,18 @@
                        style="color:darkslategray;text-align:left;font-size:13px;
                         font-weight:bold;margin-top:2px;margin-bottom:2px;padding-left:10px;"></p>
                     <p th:text="${comment.comment}" style="font-size:18px;font-weight:lighter;
-                    font-family: sans-serif;padding-left:10px;"></p>
+                    font-family: sans-serif;padding-left:10px;" th:id="data1"></p>
                     <div style="alignment:left;object-position:left" th:if="${userList[iStat.index].email==user.email} AND ${user.permission=='USER'}">
                         <a style="float:left!important;margin-left:0;object-position:left;" th:href="@{'/deleteComment/'+${comment.commentId} }">
-                            <button style="float:left;margin-left:5px;background-color:lightgoldenrodyellow;border-radius:5px;">Delete comment</button>
+                            <button style="float:left;margin-left:5px;background-color:lightgoldenrodyellow;border-radius:5px;" onclick="return confirmDelete()">Delete comment</button>
                         </a>
-                        <div id="dynamicCheck">
-                            <div id="loadComment"></div>
-                            <button type="button" style="float:right;margin-right:5px;background-color:lightgoldenrodyellow;border-radius:5px;" onclick="loadEdit()">Edit</button>
-                        </div>
                     </div>
                     <div th:if="${user.permission=='ADMIN'} OR ${user.permission=='OWNER'}">
-                        <a th:href="@{'/deleteComment/'+${comment.commentId} }">
-                            <button style="float:left;margin-left:5px;background-color:lightgoldenrodyellow;border-radius:5px;" onclick="confirmDelete()">Delete comment</button>
+                        <a th:href="@{'/deleteComment/'+${comment.commentId}}">
+                            <button style="float:left;margin-left:5px;background-color:lightgoldenrodyellow;border-radius:5px;" onclick="return confirmDelete()">Delete comment</button>
                         </a>
                     </div>
+
                 </td>
             </tr>
 
@@ -66,7 +63,7 @@
             <tr style="width:50%;float:left;padding:3px;
                 margin:5px;border-radius:10px;">
                 <td>
-                    <form action="/postComment" method="post" style="margin-top:5px;margin-bottom:5px;
+                    <form th:if="${user.email!=null}" action="/postComment" method="post" style="margin-top:5px;margin-bottom:5px;
                     border-left:5px;border-right:5px;margin-left:25%;">
                         <input type="hidden" name="comment_id">
                         <textarea datatype="text" name="comment" rows="3"
@@ -86,8 +83,15 @@
 <div id="placeFooter" th:insert="footer :: footer_template"></div>
 <script th:inline="javascript">
     function confirmDelete() {
-        confirm("Are you sure you want to delete this comment?");
-    }
+        var x = confirm("Are you sure you want to delete?");
+            if (x)
+                return true;
+            else
+                return false;
+
+        }
+
+
 </script>
 </body>
 </html>
