@@ -21,6 +21,7 @@
 <!--  Here is the column showing the TECH ARTICLES  -->
     <div class="column">
         <table th:each="articlesTech:${articlesTech}" style="margin-bottom:100px;">
+            <h1>Tech Articles</h1>
             <thead>
                 <tr>
                     <th th:text="${articlesTech.title}"></th>
@@ -41,7 +42,7 @@
                                     <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:left;margin-left:205px;margin-bottom:5px;">Modify</button>
                                 </a>
                                 <a th:method="delete" th:href="@{'/deleteArticle/'+${articlesTech.articleId}}">
-                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:right;margin-right:195px;margin-bottom:5px;">Remove</button>
+                                    <button style="background-color:lightgoldenrodyellow;border-radius:5px;float:right;margin-right:195px;margin-bottom:5px;" onclick="return confirmDelete()">Remove</button>
                                 </a>
                             </div>
                             <div th:case="OWNER">
@@ -62,6 +63,7 @@
 <!--  Here is the column showing the MODELLING ARTICLES  -->
     <div class="column">
         <table th:each="articlesModelling:${articlesModelling}" style="margin-bottom:100px;">
+            <h1>Modelling Articles</h1>
             <thead>
                 <tr>
                     <th th:text="${articlesModelling.title}"></th>
